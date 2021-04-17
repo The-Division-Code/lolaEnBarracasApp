@@ -1,0 +1,98 @@
+<%- include('partials/head.ejs') %> 
+<%- include('partials/header.ejs') %> 
+
+    <!-- Sección productos -->
+      <div>
+  
+        <div class="row">
+  
+          <div class="col-4">
+  
+            <div class="row justify-content-around">
+  
+              <h3>Busqueda de Productos</h3>
+              <form action="" class=" col-12">
+  
+                <div class="row justify-content-around">
+  
+                  <div class="form-group col-12">
+  
+                    <select class="form-control">
+  
+                      <option value="" disabled selected>Selecciona una categoría...</option>
+                      <option value="">Carteras</option>
+                      <option value="">Zapatos</option>
+                      <option value="">Accesorios</option>
+                    </select>
+                  </div>
+  
+                  <div class="form-group col-12">
+  
+                    <input class="col-12 form-control" type="text" placeholder="Modelo">
+                  </div>
+  
+  
+                  <div class="form-group col-12">
+  
+                    <select name="" id="" class="col-12 form-control">
+  
+                      <option value="" disabled selected>Selecciona un color...</option>
+                      <option value="">Negro</option>
+                      <option value="">Marrón</option>
+                      <option value="">Blanco</option>
+                      <option value="">Rojo</option>
+                      <option value="">Azul</option>
+                    </select>
+                  </div>
+  
+                  <div class="form-group col-12">
+  
+                    <select class="col-12 form-control">
+  
+                      <option value="" disabled selected>Selecciona un talle...</option>
+                      <option value="">35</option>
+                      <option value="">36</option>
+                      <option value="">37</option>
+                      <option value="">38</option>
+                      <option value="">39</option>
+                      <option value="">40</option>
+                    </select>
+                  </div>
+  
+                  <button type="reset" class="btn btn-danger col-5">Borrar</button>
+  
+                  <button type="submit" class="btn btn-primary col-5">Buscar</button>
+  
+                </div>
+              </form>
+            </div>
+          </div>
+  
+          <div class="container-fluid col-8">
+  
+            <h3>Resultado</h3>
+  
+            <div class="row card-photo">
+  
+              <div class="col-5 card-body">
+  
+                <h5 class="card-title">Nombre del modelo</h5>
+                <p class="card-title">Talle</p>
+                <p class="card-title">Color</p>
+                <p class="card-title">Precio contado</p>
+                <p class="card-title">Precio tarjeta</p>
+                <p class="card-title">Stock en local:</p>
+                <p class="card-title">Stock local 2:</p>
+                <a href="#" class="btn btn-primary">Agregar</a>
+              </div>
+  
+              <img src="/images/index.jpg" class="card-img-top col-5" alt="...">
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+
+      
+  <%- include('partials/footer.ejs') %> 
