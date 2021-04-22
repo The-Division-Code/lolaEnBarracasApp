@@ -1,4 +1,5 @@
 const db = require('../database/models');
+let {validationResult} = require(`express-validator`);
 const sequelize = db.sequelize;
 
 module.exports = indexController = {
@@ -9,17 +10,37 @@ module.exports = indexController = {
     },
     procesoLogin: (req, res) => {
 
-        let username = req.body.username;
-        let password = req.body.password;
+        let errors = validationResult(req)
 
-        db.Users.findOne({ where: {username: "admin"} })
+        if(errors.isEmpty()){
+
+            db.Users.findOne({ where: {username: req.body.username} })
             .then(user => {
 
-               console.log(user);
+               if(req.body.password == user.password){
+
+                req.session.user ={
+
+                    role: user.role
+                }
+
+                req.locals.user = req.session.user;
+
+                res.redirect('/productos');
+               }
             })
             .catch(error => {
 
                 console.log(error);
             })
+        } else {
+
+            res.render('index', {
+                errors: errors.mapped(),
+                old: req.body
+            })
+        }
+
+        
     }
 }
