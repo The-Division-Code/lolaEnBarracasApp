@@ -1,5 +1,6 @@
 const db = require('../database/models');
-let {validationResult} = require(`express-validator`);
+const indexRequests = require('../requests/indexRequests.js');
+let { validationResult } = require(`express-validator`);
 const sequelize = db.sequelize;
 
 module.exports = indexController = {
@@ -12,27 +13,27 @@ module.exports = indexController = {
 
         let errors = validationResult(req)
 
-        if(errors.isEmpty()){
+        if (errors.isEmpty()) {
 
-            db.Users.findOne({ where: {username: req.body.username} })
-            .then(user => {
+            indexRequests.getByUsername(req.body.username)
+                .then(user => {
 
-               if(req.body.password == user.password){
+                    console.log(user.data.data)
 
-                req.session.user ={
+                    if (req.body.password == user.data.data.password) {
 
-                    role: user.role
-                }
+                        req.session.user = {
 
-                req.locals.user = req.session.user;
+                            role: user.data.data.role
+                        }
 
-                res.redirect('/productos');
-               }
-            })
-            .catch(error => {
+                        res.redirect('/productos');
+                    }
+                })
+                .catch(error => {
 
-                console.log(error);
-            })
+                    console.log(error);
+                })
         } else {
 
             res.render('index', {
@@ -41,6 +42,6 @@ module.exports = indexController = {
             })
         }
 
-        
+
     }
 }

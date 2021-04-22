@@ -36,8 +36,35 @@ module.exports = indexAPIController = {
         db.Users.findOne({ where: { username: req.params.username } })
             .then(user => {
 
-                console.log(user)
-                res.json(user)
+                let respuesta;
+
+                if(!user){
+
+                    respuesta = {
+
+                        meta: {
+                            
+                            status: 404,
+                            url: `http://localhost:3030/api/index/${req.params.username}`
+                        },
+                        data: user
+                    }
+                } else {
+
+                    respuesta = {
+
+                        meta: {
+    
+                            status: 200,
+                            total: user.length,
+                            url: `http://localhost:3030/api/index/${req.params.username}`
+                        },
+                        data: user
+                    }
+                }
+                
+                res.json(respuesta);
+                
             })
             .catch(error => {
 

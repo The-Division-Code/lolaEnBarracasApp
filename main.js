@@ -4,6 +4,7 @@ var win;
 const path = require('path');
 const express = require('express');
 const webApp = express();
+const session = require('express-session');
 
 const routerIndex = require('./routes/index.js');
 const routerAdministrar = require('./routes/administrar.js');
@@ -19,6 +20,7 @@ webApp.use(express.static(path.join(__dirname, 'public')));
 
 webApp.use(express.json());
 webApp.use(express.urlencoded({ extended: false }));
+webApp.use(session({secret: `Secreto`}));
 
 webApp.listen('3030', () => console.log('App listening at port 3030'));
 

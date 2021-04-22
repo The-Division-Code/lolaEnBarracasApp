@@ -11,9 +11,12 @@
                     <form action="/" method="POST">
 
                         <label for="">Usuario</label>
-                        <input type="text" class="form-control" name="username" id="username">
+                        <br>
                         <span class="text-danger" id="error"><%= (typeof errors != 'undefined' && errors.username) ? errors.username.msg : ''%></span>
+                        <input type="text" class="form-control" name="username" id="username">
+                        
                         <label for="">Contraseña</label>
+                        <span class="text-danger" id="error"><%= (typeof errors != 'undefined' && errors.password) ? errors.password.msg : ''%></span>
                         <input type="password" class="form-control" name="password" id="password">
 
                         <button type="submit" class="btn btn-primary">Entrar</button>
