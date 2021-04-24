@@ -7,7 +7,7 @@ module.exports = (sequelize, dataTypes) => {
             defaultValue: null
         },
         picture:{
-            type:STRING(300),
+            type:dataTypes.STRING(300),
         },
         orden: {
             type: dataTypes.INTEGER(11),
