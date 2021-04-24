@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2021 a las 15:02:54
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.2
+-- Tiempo de generación: 24-04-2021 a las 17:53:57
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,59 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `lolaenbarracas`
 --
-CREATE DATABASE IF NOT EXISTS `lolaenbarracas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `lolaenbarracas`;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `blog_posts`
---
-
-CREATE TABLE `blog_posts` (
-  `id` int(10) NOT NULL,
-  `title` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
-  `post` longtext CHARACTER SET latin1 DEFAULT NULL,
-  `author_id` int(10) DEFAULT NULL,
-  `category` int(10) DEFAULT 0,
-  `date_posted` date DEFAULT NULL,
-  `published` tinyint(4) DEFAULT 0,
-  `postPict` varchar(250) COLLATE utf8_bin NOT NULL,
-  `post_descrip` varchar(500) CHARACTER SET latin1 NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `blog_post_tags`
---
-
-CREATE TABLE `blog_post_tags` (
-  `blog_post_id` int(10) DEFAULT NULL,
-  `tag_id` int(10) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `categories`
---
-
-CREATE TABLE `categories` (
-  `id` int(10) NOT NULL,
-  `name` varchar(250) CHARACTER SET latin1 DEFAULT '',
-  `in_menu` int(11) DEFAULT 1,
-  `menu_order` int(11) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
-
---
--- Volcado de datos para la tabla `categories`
---
-
-INSERT INTO `categories` (`id`, `name`, `in_menu`, `menu_order`) VALUES
-(9, 'Cine', 1, 1),
-(17, 'Moda', 1, 0),
-(19, 'Bandas', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -864,25 +811,6 @@ INSERT INTO `contact_form` (`id`, `email`, `first_name`, `last_name`, `message`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `events`
---
-
-CREATE TABLE `events` (
-  `id` int(10) NOT NULL,
-  `title` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
-  `event` longtext CHARACTER SET latin1 DEFAULT NULL,
-  `marker` int(10) DEFAULT 0,
-  `category` int(10) DEFAULT 0,
-  `date_posted` date DEFAULT NULL,
-  `published` tinyint(4) DEFAULT 0,
-  `initdate` date DEFAULT NULL,
-  `eventPict` varchar(250) COLLATE utf8_bin NOT NULL,
-  `eventDescrip` varchar(500) COLLATE utf8_bin NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `events_categories`
 --
 
@@ -891,41 +819,6 @@ CREATE TABLE `events_categories` (
   `name` varchar(250) CHARACTER SET latin1 DEFAULT '',
   `menu_order` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `markers`
---
-
-CREATE TABLE `markers` (
-  `id` int(11) NOT NULL,
-  `name` varchar(60) NOT NULL,
-  `address` varchar(80) NOT NULL,
-  `lat` float(10,6) NOT NULL,
-  `lng` float(10,6) NOT NULL,
-  `type` varchar(30) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `newsletters_contacts`
---
-
-CREATE TABLE `newsletters_contacts` (
-  `id` int(11) NOT NULL,
-  `email` varchar(250) DEFAULT '''''',
-  `first_name` varchar(250) DEFAULT '''''',
-  `last_name` varchar(250) DEFAULT ''''''
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `newsletters_contacts`
---
-
-INSERT INTO `newsletters_contacts` (`id`, `email`, `first_name`, `last_name`) VALUES
-(1, 'carlitos@pepe.com', '\'\'', '\'\'');
 
 -- --------------------------------------------------------
 
@@ -23988,70 +23881,6 @@ INSERT INTO `payment_methods` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `people`
---
-
-CREATE TABLE `people` (
-  `id` int(10) NOT NULL,
-  `first_name` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
-  `last_name` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
-  `url` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
-  `email` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
-  `avatar` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
-  `self_description` longtext CHARACTER SET latin1 DEFAULT NULL,
-  `birth_date` date DEFAULT '0000-00-00',
-  `username` varchar(250) COLLATE utf8_bin NOT NULL,
-  `password` varchar(250) COLLATE utf8_bin NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `people`
---
-
-INSERT INTO `people` (`id`, `first_name`, `last_name`, `url`, `email`, `avatar`, `self_description`, `birth_date`, `username`, `password`) VALUES
-(1, 'admin', 'admin', NULL, NULL, NULL, NULL, '0000-00-00', 'admin', 'barr4cas'),
-(2, 'rew', 'rew', '', '', '', '', '0000-00-00', 'rew', 'rew'),
-(3, 'Juan', 'Perez', '', '', '', '', '0000-00-00', 'Director de Arte', ''),
-(4, 'Mario Alberto', 'Pérez ', '', 'map@pmfuturo.com.ar', '', '', '0000-00-00', 'Mario Alberto Pérez', ''),
-(5, 'Prensa - ', 'Moe Bond Street', '', '', '', '', '0000-00-00', '', '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `personalizadas`
---
-
-CREATE TABLE `personalizadas` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `phone` varchar(100) NOT NULL,
-  `color_id` int(11) NOT NULL DEFAULT 0,
-  `payment_method_id` int(11) NOT NULL DEFAULT 0,
-  `shipping_method_id` int(11) NOT NULL DEFAULT 0,
-  `waist_id` int(11) NOT NULL DEFAULT 0,
-  `message` varchar(250) NOT NULL,
-  `file` varchar(250) NOT NULL,
-  `p_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `p_status` int(11) NOT NULL DEFAULT 2,
-  `staff_comments` varchar(250) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `places`
---
-
-CREATE TABLE `places` (
-  `id` int(10) NOT NULL,
-  `name` varchar(250) CHARACTER SET latin1 DEFAULT '',
-  `address` varchar(250) COLLATE utf8_bin DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `portada_posts`
 --
 
@@ -24090,7 +23919,6 @@ CREATE TABLE `products` (
   `name` varchar(250) CHARACTER SET utf32 NOT NULL DEFAULT '',
   `short_desc` varchar(500) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `long_desc` longtext COLLATE utf8_bin NOT NULL,
-  `type` enum('RE','AB','MU','AC','LA') COLLATE utf8_bin NOT NULL DEFAULT 'RE',
   `sub_type` int(10) NOT NULL DEFAULT 0,
   `category` int(10) NOT NULL DEFAULT 0,
   `subcategory` int(10) NOT NULL DEFAULT 0,
@@ -24112,123 +23940,123 @@ CREATE TABLE `products` (
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `code`, `name`, `short_desc`, `long_desc`, `type`, `sub_type`, `category`, `subcategory`, `price`, `price2`, `strikethrough_price`, `has_strikethrough_price`, `stock`, `shows_stock`, `size`, `measures`, `material`, `colors`, `published`, `price3`) VALUES
-(1174, '', 'Buzan', 'Cuero Vacuno', 'Bota corta confeccionada en cuero vacuno color Negro\nTalle 35 al 40 ', '', 0, 31, 11, '4490.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', 'Cuero', '\'\'', 'N', '0.00'),
-(1178, '', 'Dina beige', 'Cuero Vacuno', '', '', 0, 31, 11, '3590.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', 'Cuero', '\'\'', 'N', '0.00'),
-(1181, '', 'Emma', 'Cuero Vacuno', '', '', 0, 31, 11, '4450.00', '0.00', '5250.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1182, '', 'Irina taupe', 'Cuero Vacuno', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', 'Cuero', '\'\'', 'N', '0.00'),
-(1184, '', 'Justina suela ', 'Cuero Vacuno', '', '', 0, 31, 11, '3590.00', '0.00', '5550.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1192, '', 'Pili taupe', 'Cuero Vacuno', '', '', 0, 31, 11, '3590.00', '0.00', '5550.00', 'Y', 1, 'Y', '', '', 'Cuero', '\'\'', 'N', '0.00'),
-(1202, '', '1185', '', '', '', 0, 31, 6, '3990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1204, '', '1184.1101', '', '', '', 0, 31, 6, '3690.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1205, '', '1184.1101', '', '', '', 0, 31, 6, '3690.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1206, '', '1185.702', 'Negro Charol\nHasta talle 41 !!!!', '', '', 0, 31, 6, '3990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1207, '', '1185.702', '', '', '', 0, 31, 6, '3990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1208, '', '1344.101', '', '', '', 0, 31, 6, '3590.00', '0.00', '4590.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1209, '', '3049.219 Nobuk Camel', '', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1210, '', '3049.219 Nobuk Negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1211, '', '3049.219 Nobuk Rojo', '', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1212, '', '3076.100', '', '', '', 0, 31, 11, '4990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1213, '', '1331.209 Negro', 'Hasta talle 41 !!!!!', '', '', 0, 31, 8, '4590.00', '0.00', '4790.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1214, '', '1331.209 Nude', 'Hasta talle 41 !!!!', '', '', 0, 31, 8, '4590.00', '0.00', '4790.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1215, '', '1333.202 Negro c/oro', 'Hasta e!l talle 41 !!!!', '', '', 0, 31, 8, '4590.00', '0.00', '4390.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1217, '', 'Chesna', '', '', '', 0, 30, 3, '5990.00', '0.00', '5790.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1218, '', 'Runa', '', '', '', 0, 30, 15, '4990.00', '0.00', '5090.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1219, '', 'Yedra', '', '', '', 0, 30, 15, '4990.00', '0.00', '5090.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1220, '', 'Tafne', '', '', '', 0, 30, 15, '5350.00', '0.00', '5350.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1221, '', 'Ianira', '', '', '', 0, 30, 15, '4490.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1222, '', 'Jamila', '', '', '', 0, 30, 15, '5590.00', '0.00', '5590.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1223, '', 'Minta', '', '', '', 0, 30, 15, '4990.00', '0.00', '4890.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1224, '', 'Irene', '', '', '', 0, 30, 3, '5490.00', '0.00', '5490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1225, '', 'Zuleika', '', '', '', 0, 30, 15, '5250.00', '0.00', '5250.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1226, '', 'Tirsa', '', '', '', 0, 30, 15, '5350.00', '0.00', '5350.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1227, '', 'Ana negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '5490.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1228, '', 'Juana arena', '', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1229, '', 'Sofía', '', '', '', 0, 31, 11, '4490.00', '0.00', '5200.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1230, '', 'Afra Negro', 'Cuero vacuno Carol\nCombinado con/gamuza', '', '', 0, 31, 11, '3590.00', '0.00', '6190.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1233, '', 'Venecia negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1234, '', '1331-108 Plata', '', '', '', 0, 31, 8, '4590.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1235, '', '1331-108 Nude', '', '', '', 0, 31, 8, '4590.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1236, '', '1331-108 Negro', '', '', '', 0, 31, 8, '4590.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1237, '', 'Mora Oxido', '', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1238, '', 'Angela Talle 39', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura taco  7 cm\nElastico\nAplique desmontable', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'N', '', '', '', '\'\'', 'N', '0.00'),
-(1239, '', 'Checa suela Talle 35/39', 'Bota Corta cuero', 'Altura base 1 cm\nAltura Taco 4.5 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1240, '', 'Checa Negro Talle 35/36/37', 'Bota Corta cuero', 'Altura base 1 cm\nAltura Taco 4.5 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1241, '', 'Chela suela Talle 35/38/39/40', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura Taco 4 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1242, '', 'Chela Negra Talle 35/37/39', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura Taco 4 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1243, '', 'Darin oxido 35/39', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura Taco  6.5 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1244, '', 'Darin Negro Talle 35/36/40', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura Taco 6.5 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1245, '', 'Enna Negro Talle 39', 'Bota Corta cuero', 'Altura base 1.2 cm\nAltura Taco 9 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1247, '', 'Justa Suela Talle 35', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura taco 6 cm\nCierre trasero', '', 0, 34, 16, '2990.00', '0.00', '6250.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1248, '', 'Justa Negro Talle 35/36', 'Bota Corta cuero', 'Altura base 1.5 cm\nAltura Taco 6 cm\nCierre trasero', '', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1249, '', 'Lali Negro Talle 35/39/40', 'Bota Corta cuero', 'Altura base 3 cm\nAltura Taco 6 cm\nCierre lateral\nAplique fijo', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1250, '', 'Lali 1 Negro Talle 38/39', 'Bota Corta charol c/gamuza', 'Altura base   2 cm\nAltura Taco 3.5 cm\nElastico\n', '', 0, 34, 16, '2990.00', '0.00', '6250.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1251, '', 'Macky Negro Talle 40', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco  7 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1252, '', 'Mari Negro Talle 35/39/40', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura Taco   9 cm\nElastico\n', '', 0, 34, 16, '3200.00', '0.00', '6590.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1253, '', 'Milan Negro Talle 35/36', 'Bota Corta cuero', 'Altura base 1 cm\nAltura Taco 5 cm\nDoble cierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1254, '', 'Mili Bordo Talle 35/38', 'Bota Corta Cuero', 'Altura base 1 cm\nAltura Taco  6 cm\nDoble cierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1255, '', 'Nina Negro Talle 35/36', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura Taco 4.5 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1256, '', 'Nina Camel Talle 35 / 39', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura taco 4.5 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 5990, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1257, '', 'Ricky Negro Talle 37', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco  7 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1258, '', 'Ricky Suela Talle 35/36/37/38/39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco 7 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1259, '', 'Ricky Vison Talle 36', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura taco 7 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1260, '', 'Rochi Maiz Talle 38/40', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura taco. 7 cm\nElastico\nAplique desmontable', '', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1261, '', 'Rochi Negro Talle 35/39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura taco 7 cm\nElastico\nAplique desmontable', '', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1262, '', 'Tania Negro Talle 35/39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco. 6.5 cm\nCierre lateral\nAplique fijo', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1263, '', 'Bostón Negro Talle 37', 'Bota Corta Cuero con aplique desmontable', '', '', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1264, '', 'Cleta Hábano Talle 39', 'Bota Corta cierre lateral', 'Altura base 3.5 cm\nAltura taco  5 cm\n', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1265, '', 'Cleta Negro Talle 38', 'Bota Corta Cuero', 'Altura base 3.5 cm\nAltura taco.  5   cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1267, '', 'Kurt negro Talla 35', 'Bota Corta Cuero\nAcceso elastico', 'Altura base. 2.5 cm\nAltura taco   4.5 cm', '', 0, 34, 16, '5990.00', '0.00', '2990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1268, '', 'Lopilato Negro Talles 35/39/40', 'Bota Corta cuero\nAplique desmontable\nAcceso elastico', 'Altura base : 1.5 cm\nAltura taco :.  9 cm', '', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1269, '', 'Lore Bordó Talle 39/39', 'Bota Corta Cuero\nDoble cierre lateral', 'Altura base: 2 cm\nAltura taco:. 8.5 cm', '', 0, 34, 16, '5990.00', '0.00', '2990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1270, '', 'Lore Camel Talle 38', 'Bota Corta Cuero\nDoble cierre lateral', 'Altura base : 2 cm\nAltura taco:  8.5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1271, '', 'Lore Negro Talle 39 ', 'Bota Corta Cuero\nDoble cierre lateral', 'Altura base 2 cm\nAltura taco: 8.5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1272, '', 'Lore Taupé 1 Talle 35/38/40', 'Bota Corta Cuero\nDoble cierre lateral', 'Altura base 2 cm\nAltura taco  8.5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1273, '', 'Lore Vesubio Talle 39', 'Bota Corta Cuero\nCierre lateral doble', 'Altura base : 2 cm\nAltura taco : 8.5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1274, '', 'Marian Bordó Talle 36', 'Bota Corta Cuero\nCierre lateral', 'Altura base: 2.5 cm\nAltura taco:  4 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1275, '', 'Marian Negro', 'Bota Corta', '', '', 0, 34, 16, '0.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1276, '', 'Máxima Azul Talle 39', 'Bota Corta cuero\nElastico lateral', 'Altura base 3.5 cm\nAltura taco: 9.5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1277, '', 'More Negro Talle 35/39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco  6.5 cm\nCierre en talón', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1278, '', 'Niza Negro', 'Bota Corta', '', '', 0, 34, 16, '0.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1279, '', 'Oriana Hábano Talle 39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura taco  7 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1280, '', 'Rud nude Talle 38/40', 'Bota Corta cuero\nElastico', 'Altura base 1 cm\nAltura taco. 5.5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1281, '', 'Rusia Hábano Talle 39', 'Bota Corta cuero\nCierre lateral', 'Altura base 1 cm\nAltura taco  6.5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1282, '', 'Suar Vesubio Talle 39', 'Bota Corta cuero\nElastico', 'Altura base 2.5 cm\nAltura taco  5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1283, '', 'Tini Negro', 'Bota Corta', '', '', 0, 34, 16, '0.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1284, '', 'Versa 181 Negro Talle 39', 'Bota Corta cuero\nCierre lateral', 'Altura base 3 cm\nAltura taco 8.5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1285, '', 'Versa Negro Talle 40', 'Bota Corta cuero\nCierre lateral', 'Altura base. 3 cm\nAltura Taco 8.5 cm', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1286, '', 'Victoria Negro Talle 35/39/40', 'Bota Corta cuero\n', 'Altura base 1 cm\nAltura Taco 7.5 cm\nCierre lateral', '', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1287, '', 'Vidal Hábano Talle 35/39', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura Taco 6 cm\nCierre en talón\nAplique desmontable', '', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1289, '', 'Polonia taupe', '', '', '', 0, 31, 11, '3590.00', '0.00', '5490.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1294, '', 'Justina negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '5490.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1295, '', 'Buzan negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1298, '', 'Mora negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '4490.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1301, '', 'Sofía negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '4990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1303, '', 'EMI oxido', '', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1304, '', 'EMI negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1305, '', 'Emma negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1311, '', 'Emma animal print', '', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1312, '', 'Lolo negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '5490.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1313, '', 'Pilli negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1314, '', 'Lara negro', '', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
-(1317, '', 'Zapa 1234', 'Cuero charol combinada con neoprene', '', '', 0, 31, 8, '5990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1318, '', 'Zapa 1260', '', '', '', 0, 31, 11, '6290.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1319, '', '1', 'Sandalias', '', '', 0, 31, 1, '3500.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1320, '', '2', 'Zapatillas', '', '', 0, 31, 8, '6900.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1321, '', '3', 'Zapatilla', '', '', 0, 31, 8, '6500.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1322, '', '4', 'Zapatilla', '', '', 0, 31, 8, '6700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1323, '', '5', 'Sandalia', '', '', 0, 31, 1, '5900.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1324, '', '6', 'Zapatilla', '', '', 0, 31, 8, '5400.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1325, '', '7', 'Zapatilla', '', '', 0, 31, 8, '5700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1326, '', '8', 'Sandalia', '', '', 0, 31, 1, '5900.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1327, '', '9', 'Zapatilla', '', '', 0, 31, 8, '6300.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1328, '', '10', 'Sandalia', '', '', 0, 31, 1, '5600.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1329, '', '11', 'Zapatilla', '', '', 0, 31, 8, '6300.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1330, '', '12', 'Zapatilla', '', '', 0, 31, 8, '5700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1331, '', '13', 'Sandalia', '', '', 0, 31, 1, '5900.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1332, '', '14', 'Sandalia', '', '', 0, 31, 1, '5700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1333, '', '15', 'Sandalia', '', '', 0, 31, 1, '6200.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1334, '', '1331.108 Nude con Metal', '', '', '', 0, 31, 8, '5890.00', '0.00', '0.00', 'N', 0, 'N', '', '', '', '\'\'', 'Y', '0.00');
+INSERT INTO `products` (`id`, `code`, `name`, `short_desc`, `long_desc`, `sub_type`, `category`, `subcategory`, `price`, `price2`, `strikethrough_price`, `has_strikethrough_price`, `stock`, `shows_stock`, `size`, `measures`, `material`, `colors`, `published`, `price3`) VALUES
+(1174, '', 'Buzan', 'Cuero Vacuno', 'Bota corta confeccionada en cuero vacuno color Negro\nTalle 35 al 40 ', 0, 31, 11, '4490.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', 'Cuero', '\'\'', 'N', '0.00'),
+(1178, '', 'Dina beige', 'Cuero Vacuno', '', 0, 31, 11, '3590.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', 'Cuero', '\'\'', 'N', '0.00'),
+(1181, '', 'Emma', 'Cuero Vacuno', '', 0, 31, 11, '4450.00', '0.00', '5250.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1182, '', 'Irina taupe', 'Cuero Vacuno', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', 'Cuero', '\'\'', 'N', '0.00'),
+(1184, '', 'Justina suela ', 'Cuero Vacuno', '', 0, 31, 11, '3590.00', '0.00', '5550.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1192, '', 'Pili taupe', 'Cuero Vacuno', '', 0, 31, 11, '3590.00', '0.00', '5550.00', 'Y', 1, 'Y', '', '', 'Cuero', '\'\'', 'N', '0.00'),
+(1202, '', '1185', '', '', 0, 31, 6, '3990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1204, '', '1184.1101', '', '', 0, 31, 6, '3690.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1205, '', '1184.1101', '', '', 0, 31, 6, '3690.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1206, '', '1185.702', 'Negro Charol\nHasta talle 41 !!!!', '', 0, 31, 6, '3990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1207, '', '1185.702', '', '', 0, 31, 6, '3990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1208, '', '1344.101', '', '', 0, 31, 6, '3590.00', '0.00', '4590.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1209, '', '3049.219 Nobuk Camel', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1210, '', '3049.219 Nobuk Negro', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1211, '', '3049.219 Nobuk Rojo', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1212, '', '3076.100', '', '', 0, 31, 11, '4990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1213, '', '1331.209 Negro', 'Hasta talle 41 !!!!!', '', 0, 31, 8, '4590.00', '0.00', '4790.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1214, '', '1331.209 Nude', 'Hasta talle 41 !!!!', '', 0, 31, 8, '4590.00', '0.00', '4790.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1215, '', '1333.202 Negro c/oro', 'Hasta e!l talle 41 !!!!', '', 0, 31, 8, '4590.00', '0.00', '4390.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1217, '', 'Chesna', '', '', 0, 30, 3, '5990.00', '0.00', '5790.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1218, '', 'Runa', '', '', 0, 30, 15, '4990.00', '0.00', '5090.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1219, '', 'Yedra', '', '', 0, 30, 15, '4990.00', '0.00', '5090.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1220, '', 'Tafne', '', '', 0, 30, 15, '5350.00', '0.00', '5350.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1221, '', 'Ianira', '', '', 0, 30, 15, '4490.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1222, '', 'Jamila', '', '', 0, 30, 15, '5590.00', '0.00', '5590.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1223, '', 'Minta', '', '', 0, 30, 15, '4990.00', '0.00', '4890.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1224, '', 'Irene', '', '', 0, 30, 3, '5490.00', '0.00', '5490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1225, '', 'Zuleika', '', '', 0, 30, 15, '5250.00', '0.00', '5250.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1226, '', 'Tirsa', '', '', 0, 30, 15, '5350.00', '0.00', '5350.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1227, '', 'Ana negro', '', '', 0, 31, 11, '3590.00', '0.00', '5490.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1228, '', 'Juana arena', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1229, '', 'Sofía', '', '', 0, 31, 11, '4490.00', '0.00', '5200.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1230, '', 'Afra Negro', 'Cuero vacuno Carol\nCombinado con/gamuza', '', 0, 31, 11, '3590.00', '0.00', '6190.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1233, '', 'Venecia negro', '', '', 0, 31, 11, '3590.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1234, '', '1331-108 Plata', '', '', 0, 31, 8, '4590.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1235, '', '1331-108 Nude', '', '', 0, 31, 8, '4590.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1236, '', '1331-108 Negro', '', '', 0, 31, 8, '4590.00', '0.00', '4490.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1237, '', 'Mora Oxido', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1238, '', 'Angela Talle 39', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura taco  7 cm\nElastico\nAplique desmontable', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'N', '', '', '', '\'\'', 'N', '0.00'),
+(1239, '', 'Checa suela Talle 35/39', 'Bota Corta cuero', 'Altura base 1 cm\nAltura Taco 4.5 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1240, '', 'Checa Negro Talle 35/36/37', 'Bota Corta cuero', 'Altura base 1 cm\nAltura Taco 4.5 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1241, '', 'Chela suela Talle 35/38/39/40', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura Taco 4 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1242, '', 'Chela Negra Talle 35/37/39', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura Taco 4 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1243, '', 'Darin oxido 35/39', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura Taco  6.5 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1244, '', 'Darin Negro Talle 35/36/40', 'Bota Corta cuero', 'Altura base 2.5 cm\nAltura Taco 6.5 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1245, '', 'Enna Negro Talle 39', 'Bota Corta cuero', 'Altura base 1.2 cm\nAltura Taco 9 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1247, '', 'Justa Suela Talle 35', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura taco 6 cm\nCierre trasero', 0, 34, 16, '2990.00', '0.00', '6250.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1248, '', 'Justa Negro Talle 35/36', 'Bota Corta cuero', 'Altura base 1.5 cm\nAltura Taco 6 cm\nCierre trasero', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1249, '', 'Lali Negro Talle 35/39/40', 'Bota Corta cuero', 'Altura base 3 cm\nAltura Taco 6 cm\nCierre lateral\nAplique fijo', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1250, '', 'Lali 1 Negro Talle 38/39', 'Bota Corta charol c/gamuza', 'Altura base   2 cm\nAltura Taco 3.5 cm\nElastico\n', 0, 34, 16, '2990.00', '0.00', '6250.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1251, '', 'Macky Negro Talle 40', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco  7 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1252, '', 'Mari Negro Talle 35/39/40', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura Taco   9 cm\nElastico\n', 0, 34, 16, '3200.00', '0.00', '6590.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1253, '', 'Milan Negro Talle 35/36', 'Bota Corta cuero', 'Altura base 1 cm\nAltura Taco 5 cm\nDoble cierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1254, '', 'Mili Bordo Talle 35/38', 'Bota Corta Cuero', 'Altura base 1 cm\nAltura Taco  6 cm\nDoble cierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1255, '', 'Nina Negro Talle 35/36', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura Taco 4.5 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1256, '', 'Nina Camel Talle 35 / 39', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura taco 4.5 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 5990, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1257, '', 'Ricky Negro Talle 37', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco  7 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1258, '', 'Ricky Suela Talle 35/36/37/38/39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco 7 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1259, '', 'Ricky Vison Talle 36', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura taco 7 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1260, '', 'Rochi Maiz Talle 38/40', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura taco. 7 cm\nElastico\nAplique desmontable', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1261, '', 'Rochi Negro Talle 35/39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura taco 7 cm\nElastico\nAplique desmontable', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1262, '', 'Tania Negro Talle 35/39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco. 6.5 cm\nCierre lateral\nAplique fijo', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1263, '', 'Bostón Negro Talle 37', 'Bota Corta Cuero con aplique desmontable', '', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1264, '', 'Cleta Hábano Talle 39', 'Bota Corta cierre lateral', 'Altura base 3.5 cm\nAltura taco  5 cm\n', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1265, '', 'Cleta Negro Talle 38', 'Bota Corta Cuero', 'Altura base 3.5 cm\nAltura taco.  5   cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1267, '', 'Kurt negro Talla 35', 'Bota Corta Cuero\nAcceso elastico', 'Altura base. 2.5 cm\nAltura taco   4.5 cm', 0, 34, 16, '5990.00', '0.00', '2990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1268, '', 'Lopilato Negro Talles 35/39/40', 'Bota Corta cuero\nAplique desmontable\nAcceso elastico', 'Altura base : 1.5 cm\nAltura taco :.  9 cm', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1269, '', 'Lore Bordó Talle 39/39', 'Bota Corta Cuero\nDoble cierre lateral', 'Altura base: 2 cm\nAltura taco:. 8.5 cm', 0, 34, 16, '5990.00', '0.00', '2990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1270, '', 'Lore Camel Talle 38', 'Bota Corta Cuero\nDoble cierre lateral', 'Altura base : 2 cm\nAltura taco:  8.5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1271, '', 'Lore Negro Talle 39 ', 'Bota Corta Cuero\nDoble cierre lateral', 'Altura base 2 cm\nAltura taco: 8.5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1272, '', 'Lore Taupé 1 Talle 35/38/40', 'Bota Corta Cuero\nDoble cierre lateral', 'Altura base 2 cm\nAltura taco  8.5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1273, '', 'Lore Vesubio Talle 39', 'Bota Corta Cuero\nCierre lateral doble', 'Altura base : 2 cm\nAltura taco : 8.5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1274, '', 'Marian Bordó Talle 36', 'Bota Corta Cuero\nCierre lateral', 'Altura base: 2.5 cm\nAltura taco:  4 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1275, '', 'Marian Negro', 'Bota Corta', '', 0, 34, 16, '0.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1276, '', 'Máxima Azul Talle 39', 'Bota Corta cuero\nElastico lateral', 'Altura base 3.5 cm\nAltura taco: 9.5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1277, '', 'More Negro Talle 35/39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura Taco  6.5 cm\nCierre en talón', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1278, '', 'Niza Negro', 'Bota Corta', '', 0, 34, 16, '0.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1279, '', 'Oriana Hábano Talle 39', 'Bota Corta Cuero', 'Altura base 2.5 cm\nAltura taco  7 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1280, '', 'Rud nude Talle 38/40', 'Bota Corta cuero\nElastico', 'Altura base 1 cm\nAltura taco. 5.5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1281, '', 'Rusia Hábano Talle 39', 'Bota Corta cuero\nCierre lateral', 'Altura base 1 cm\nAltura taco  6.5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1282, '', 'Suar Vesubio Talle 39', 'Bota Corta cuero\nElastico', 'Altura base 2.5 cm\nAltura taco  5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1283, '', 'Tini Negro', 'Bota Corta', '', 0, 34, 16, '0.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1284, '', 'Versa 181 Negro Talle 39', 'Bota Corta cuero\nCierre lateral', 'Altura base 3 cm\nAltura taco 8.5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1285, '', 'Versa Negro Talle 40', 'Bota Corta cuero\nCierre lateral', 'Altura base. 3 cm\nAltura Taco 8.5 cm', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1286, '', 'Victoria Negro Talle 35/39/40', 'Bota Corta cuero\n', 'Altura base 1 cm\nAltura Taco 7.5 cm\nCierre lateral', 0, 34, 16, '2990.00', '0.00', '5990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1287, '', 'Vidal Hábano Talle 35/39', 'Bota Corta Cuero', 'Altura base 1.5 cm\nAltura Taco 6 cm\nCierre en talón\nAplique desmontable', 0, 34, 16, '2990.00', '0.00', '6290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1289, '', 'Polonia taupe', '', '', 0, 31, 11, '3590.00', '0.00', '5490.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1294, '', 'Justina negro', '', '', 0, 31, 11, '3590.00', '0.00', '5490.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1295, '', 'Buzan negro', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1298, '', 'Mora negro', '', '', 0, 31, 11, '3590.00', '0.00', '4490.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1301, '', 'Sofía negro', '', '', 0, 31, 11, '3590.00', '0.00', '4990.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1303, '', 'EMI oxido', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'N', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1304, '', 'EMI negro', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1305, '', 'Emma negro', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1311, '', 'Emma animal print', '', '', 0, 31, 11, '3590.00', '0.00', '4890.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1312, '', 'Lolo negro', '', '', 0, 31, 11, '3590.00', '0.00', '5490.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1313, '', 'Pilli negro', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1314, '', 'Lara negro', '', '', 0, 31, 11, '3590.00', '0.00', '5290.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'N', '0.00'),
+(1317, '', 'Zapa 1234', 'Cuero charol combinada con neoprene', '', 0, 31, 8, '5990.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1318, '', 'Zapa 1260', '', '', 0, 31, 11, '6290.00', '0.00', '0.00', 'N', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1319, '', '1', 'Sandalias', '', 0, 31, 1, '3500.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1320, '', '2', 'Zapatillas', '', 0, 31, 8, '6900.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1321, '', '3', 'Zapatilla', '', 0, 31, 8, '6500.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1322, '', '4', 'Zapatilla', '', 0, 31, 8, '6700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1323, '', '5', 'Sandalia', '', 0, 31, 1, '5900.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1324, '', '6', 'Zapatilla', '', 0, 31, 8, '5400.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1325, '', '7', 'Zapatilla', '', 0, 31, 8, '5700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1326, '', '8', 'Sandalia', '', 0, 31, 1, '5900.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1327, '', '9', 'Zapatilla', '', 0, 31, 8, '6300.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1328, '', '10', 'Sandalia', '', 0, 31, 1, '5600.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1329, '', '11', 'Zapatilla', '', 0, 31, 8, '6300.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1330, '', '12', 'Zapatilla', '', 0, 31, 8, '5700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1331, '', '13', 'Sandalia', '', 0, 31, 1, '5900.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1332, '', '14', 'Sandalia', '', 0, 31, 1, '5700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1333, '', '15', 'Sandalia', '', 0, 31, 1, '6200.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1334, '', '1331.108 Nude con Metal', '', '', 0, 31, 8, '5890.00', '0.00', '0.00', 'N', 0, 'N', '', '', '', '\'\'', 'Y', '0.00');
 
 -- --------------------------------------------------------
 
@@ -26815,81 +26643,6 @@ INSERT INTO `p_colors` (`id`, `desc`, `hex`, `picture`, `orden`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `p_sub_types`
---
-
-CREATE TABLE `p_sub_types` (
-  `id` int(11) NOT NULL,
-  `desc` varchar(45) DEFAULT '',
-  `orden` int(11) DEFAULT 0,
-  `type_id` enum('RE','AB','MU','AC','LA') NOT NULL DEFAULT 'RE',
-  `image` varchar(100) NOT NULL DEFAULT '',
-  `has_waists` enum('N','Y') NOT NULL DEFAULT 'Y',
-  `weight` int(11) DEFAULT 200
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Volcado de datos para la tabla `p_sub_types`
---
-
-INSERT INTO `p_sub_types` (`id`, `desc`, `orden`, `type_id`, `image`, `has_waists`, `weight`) VALUES
-(1, 'Bikinis y Lenceria', 1, 'LA', 'bikinis_y_lenceria.png', 'Y', 150),
-(2, 'Body de Bebe', 2, 'RE', 'body_de_bebe.png', 'Y', 200),
-(3, 'Buzo', 3, 'AB', 'buzo.png', 'Y', 500),
-(4, 'Buzo con Capucha', 4, 'AB', 'buzo_con_capucha.png', 'Y', 500),
-(5, 'Calza', 5, 'LA', 'calza.png', 'Y', 200),
-(6, 'Campera con Capucha', 6, 'AB', 'campera_con_capucha.png', 'Y', 500),
-(7, 'Campera Varsity', 7, 'AB', 'campera_varsity.png', 'Y', 500),
-(8, 'Gorra Trucker', 8, 'AC', 'gorra_trucker.png', 'Y', 200),
-(9, 'Gorro de Lana', 9, 'AC', 'gorro_de_lana.png', 'Y', 200),
-(10, 'Malla Enteriza', 10, 'LA', 'malla_enteriza.png', 'Y', 200),
-(11, 'Mochila', 11, 'AC', 'mochila.png', 'Y', 500),
-(12, 'Morral', 12, 'AC', 'morral.png', 'Y', 500),
-(13, 'Musculosa de Basket', 13, 'MU', 'musculosa_de_basket.png', 'Y', 200),
-(14, 'Musculosa de Hombre', 14, 'MU', 'musculosa_de_hombre.png', 'Y', 200),
-(15, 'Musculosa de Mujer Entallada', 15, 'MU', 'musculosa_de_mujer_entallada.png', 'Y', 200),
-(16, 'Musculosa de Mujer Holgada', 16, 'MU', 'musculosa_de_mujer_holgada.png', 'Y', 200),
-(17, 'Remera Unisex', 17, 'RE', 'remera_unisex.png', 'Y', 200),
-(18, 'Remera de Mujer Cuello Abierto', 18, 'RE', 'remera_de_mujer_cuello_abierto.png', 'Y', 200),
-(20, 'Remera Manga Raglan', 20, 'RE', 'remera_manga_raglan.png', 'Y', 250),
-(21, 'Vestido', 21, 'LA', 'vestido.png', 'Y', 300),
-(22, 'Pollera', 22, 'LA', 'pollera.png', 'Y', 300),
-(23, 'Bandana', 23, 'AC', 'bandana.png', 'Y', 300),
-(24, 'Barbijo', 24, 'AC', 'barbijo.png', 'Y', 300),
-(25, 'Guantes', 25, 'AC', 'guantes.png', 'Y', 300),
-(26, 'Guantes mitones', 26, 'AC', 'guantes_mitones.png', 'Y', 300),
-(27, 'Medias', 27, 'AC', 'medias.png', 'Y', 300),
-(28, 'Pantalon', 27, 'AC', 'pantalon.png', 'Y', 300),
-(29, 'Otras', 0, 'RE', '', 'Y', 200);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `p_types`
---
-
-CREATE TABLE `p_types` (
-  `id` enum('RE','AB','MU','AC','LA') NOT NULL,
-  `desc` varchar(45) DEFAULT '',
-  `orden` int(11) DEFAULT 0,
-  `image` varchar(100) NOT NULL DEFAULT '',
-  `has_waists` enum('N','Y') NOT NULL DEFAULT 'Y'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `p_types`
---
-
-INSERT INTO `p_types` (`id`, `desc`, `orden`, `image`, `has_waists`) VALUES
-('RE', 'Remeras', 1, 'remera_de_hombre.png', 'Y'),
-('AB', 'Abrigos', 3, 'buzo.png', 'Y'),
-('MU', 'Musculosas', 2, 'musculosa_de_basket.png', 'Y'),
-('AC', 'Accesorios', 4, 'gorra_trucker.png', 'Y'),
-('LA', 'Ladies', 5, 'bikinis_y_lenceria.png', 'Y');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `p_waists`
 --
 
@@ -27466,64 +27219,6 @@ INSERT INTO `sales_status` (`id`, `descrip`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sections`
---
-
-CREATE TABLE `sections` (
-  `id` int(10) NOT NULL,
-  `title` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
-  `descrip` text CHARACTER SET latin1 DEFAULT NULL,
-  `content` longtext CHARACTER SET latin1 DEFAULT NULL,
-  `author_id` int(10) DEFAULT NULL,
-  `date_posted` date DEFAULT NULL,
-  `published` tinyint(4) DEFAULT 0,
-  `last_modified` date DEFAULT NULL,
-  `category` int(10) NOT NULL DEFAULT 0,
-  `sectionPict` varchar(250) COLLATE utf8_bin NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
-
---
--- Volcado de datos para la tabla `sections`
---
-
-INSERT INTO `sections` (`id`, `title`, `descrip`, `content`, `author_id`, `date_posted`, `published`, `last_modified`, `category`, `sectionPict`) VALUES
-(1, 'dsada', 'dsada', '<p>dsadadas</p>', NULL, '2016-01-27', 1, '2016-01-09', 1, ''),
-(2, 'Prueba', 'Esto habla sobre...', '<p>Hola,</p>', NULL, '2016-07-31', 1, '2016-07-04', 2, '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `sections_categories`
---
-
-CREATE TABLE `sections_categories` (
-  `id` int(10) NOT NULL,
-  `name` varchar(250) CHARACTER SET latin1 DEFAULT '',
-  `menu_order` int(11) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
-
---
--- Volcado de datos para la tabla `sections_categories`
---
-
-INSERT INTO `sections_categories` (`id`, `name`, `menu_order`) VALUES
-(1, 'Música', 0),
-(2, 'Interés generál', 0);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `sections_pictures`
---
-
-CREATE TABLE `sections_pictures` (
-  `section_cat_id` int(10) DEFAULT NULL,
-  `picture` varchar(300) COLLATE utf8_bin DEFAULT ''''''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=FIXED;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `shipping_methods`
 --
 
@@ -27540,17 +27235,6 @@ INSERT INTO `shipping_methods` (`id`, `name`) VALUES
 (1, 'Retira en el local'),
 (2, 'A convenir'),
 (7, 'Entrega por Oca a todo el país (pago en destino)');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tags`
---
-
-CREATE TABLE `tags` (
-  `id` int(10) NOT NULL,
-  `name` varchar(250) CHARACTER SET latin1 DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -27604,18 +27288,6 @@ INSERT INTO `web_info` (`name`, `descrip`, `phone`, `email`, `address`, `city`, 
 --
 
 --
--- Indices de la tabla `blog_posts`
---
-ALTER TABLE `blog_posts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `clients`
 --
 ALTER TABLE `clients`
@@ -27628,27 +27300,9 @@ ALTER TABLE `contact_form`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `events`
---
-ALTER TABLE `events`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `events_categories`
 --
 ALTER TABLE `events_categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `markers`
---
-ALTER TABLE `markers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `newsletters_contacts`
---
-ALTER TABLE `newsletters_contacts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -27668,24 +27322,6 @@ ALTER TABLE `old_provincia`
 -- Indices de la tabla `payment_methods`
 --
 ALTER TABLE `payment_methods`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `people`
---
-ALTER TABLE `people`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `personalizadas`
---
-ALTER TABLE `personalizadas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `places`
---
-ALTER TABLE `places`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -27719,18 +27355,6 @@ ALTER TABLE `p_colors`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `p_sub_types`
---
-ALTER TABLE `p_sub_types`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `p_types`
---
-ALTER TABLE `p_types`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `p_waists`
 --
 ALTER TABLE `p_waists`
@@ -27755,27 +27379,9 @@ ALTER TABLE `sales_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `sections`
---
-ALTER TABLE `sections`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `sections_categories`
---
-ALTER TABLE `sections_categories`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `shipping_methods`
 --
 ALTER TABLE `shipping_methods`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `tags`
---
-ALTER TABLE `tags`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -27795,18 +27401,6 @@ ALTER TABLE `web_info`
 --
 
 --
--- AUTO_INCREMENT de la tabla `blog_posts`
---
-ALTER TABLE `blog_posts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT de la tabla `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
 -- AUTO_INCREMENT de la tabla `clients`
 --
 ALTER TABLE `clients`
@@ -27819,52 +27413,16 @@ ALTER TABLE `contact_form`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `events`
---
-ALTER TABLE `events`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `events_categories`
 --
 ALTER TABLE `events_categories`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `markers`
---
-ALTER TABLE `markers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `newsletters_contacts`
---
-ALTER TABLE `newsletters_contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT de la tabla `payment_methods`
 --
 ALTER TABLE `payment_methods`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT de la tabla `people`
---
-ALTER TABLE `people`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `personalizadas`
---
-ALTER TABLE `personalizadas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `places`
---
-ALTER TABLE `places`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
@@ -27891,12 +27449,6 @@ ALTER TABLE `p_colors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT de la tabla `p_sub_types`
---
-ALTER TABLE `p_sub_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
 -- AUTO_INCREMENT de la tabla `p_waists`
 --
 ALTER TABLE `p_waists`
@@ -27919,24 +27471,6 @@ ALTER TABLE `sales_info`
 --
 ALTER TABLE `sales_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `sections`
---
-ALTER TABLE `sections`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `sections_categories`
---
-ALTER TABLE `sections_categories`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `tags`
---
-ALTER TABLE `tags`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
