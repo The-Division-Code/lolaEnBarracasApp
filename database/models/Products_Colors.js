@@ -4,7 +4,8 @@ module.exports = (sequelize, dataTypes) => {
     let cols= {
         product_id:{
             type: dataTypes.INTEGER(10),
-            defaultValue: 0
+            defaultValue: 0,
+            primaryKey: true
         },
         color_id:{
             type: dataTypes.INTEGER(10),

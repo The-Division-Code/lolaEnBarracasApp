@@ -3,12 +3,12 @@ const sequelize = db.sequelize;
 
 let prueba = () => {
 
-    db.Products_Colors.findAll()
-        .then(colors => {
+    db.P_Colors.findAll()
+        .then(pColors => {
 
-            colors.forEach(color => {
+            pColors.forEach(pColor => {
 
-                console.log(color.dataValues)
+                console.log(pColor.dataValues)
             })
         })
         .catch(error => {
@@ -17,4 +17,4 @@ let prueba = () => {
         })
 }
 
-prueba()
+prueba();
