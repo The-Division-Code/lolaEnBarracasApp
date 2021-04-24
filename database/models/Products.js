@@ -30,12 +30,6 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         
-        type:{
-            type: dataTypes.ENUM('RE', 'AB', 'MU', 'AC', 'LA'),
-            allowNull: false,
-            defaultValue: 'RE'
-        },
-
         sub_type:{
             type: dataTypes.INTEGER(10),
             allowNull: false,
