@@ -3,18 +3,17 @@ const sequelize = db.sequelize;
 
 let prueba = () => {
 
+    db.Products_Waists.findAll()
+        .then(waists => {
 
-    db.Users.findAll()
-        .then(users => {
+            waists.forEach(waist => {
 
-            users.forEach(user => {
-
-                console.log(user.dataValues)
+                console.log(waist.dataValues)
             })
         })
         .catch(error => {
 
-            console.log(error);
+            console.log(error)
         })
 }
 
