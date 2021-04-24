@@ -13,6 +13,21 @@ module.exports= (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             defaultValue: 0
+        },
+        stock_lola1013: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            defaultValue: 0
+        },
+        stock_lola774: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            defaultValue: 0
+        },
+        stock_total: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            defaultValue: 0
         }
     };
     let config = {
