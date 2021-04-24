@@ -2,49 +2,49 @@ window.addEventListener('load',() => {
 
     document.getElementById("app").style.backgroundColor = '#fafafa';
 
-    let cuerpo = document.getElementById("cuerpo");
-    cuerpo.style.display = "none"
+    // let cuerpo = document.getElementById("cuerpo");
+    // cuerpo.style.display = "none"
     
-    var username;
-    var password;
+    // var username;
+    // var password;
     
-    swal({
+    // swal({
     
-        title: "Username",
-        content: "input",
-    })
-    .then((value) => {
+    //     title: "Username",
+    //     content: "input",
+    // })
+    // .then((value) => {
     
-        username = `${value}`
+    //     username = `${value}`
     
-        swal({
-            title: "Password",
-            content: {
+    //     swal({
+    //         title: "Password",
+    //         content: {
     
-                element: "input",
-                attributes: {
+    //             element: "input",
+    //             attributes: {
     
-                    type: "password"
-                }
-            }
-        })
-        .then((value) => {
+    //                 type: "password"
+    //             }
+    //         }
+    //     })
+    //     .then((value) => {
     
-            password = `${value}`
+    //         password = `${value}`
             
-            swal({
-                title: "Conexión exitosa!",
-                icon: "success",
-                timer: 1000,
-            })
-            .then(value => {
+    //         swal({
+    //             title: "Conexión exitosa!",
+    //             icon: "success",
+    //             timer: 1000,
+    //         })
+    //         .then(value => {
     
-                cuerpo.style.display = "inherit";
-            })
+    //             cuerpo.style.display = "inherit";
+    //         })
     
     
-        })
-    })
+    //     })
+    // })
 })
 
 
