@@ -1,4 +1,5 @@
 const {app, BrowserWindow} = require('electron');
+require('electron-reload')(__dirname);
 var win;
 
 const path = require('path');
@@ -12,6 +13,7 @@ const routerVentas = require('./routes/ventas.js');
 const routerProductos = require('./routes/productos.js');
 
 const routerAPIIndex = require('./routes/apis/index.js');
+const routerAPIProducts = require('./routes/apis/productos.js');
 
 webApp.set('views', path.join(__dirname, 'views'));
 webApp.set('view engine', 'ejs');
@@ -30,6 +32,7 @@ webApp.use('/administrar', routerAdministrar);
 webApp.use('/ventas', routerVentas);
 
 webApp.use('/api/index', routerAPIIndex);
+webApp.use('/api/products', routerAPIProducts);
 
 function createWindow(){
 
@@ -55,6 +58,7 @@ app.whenReady().then(() => {
     app.on('activate', () => {
 
         if(BrowserWindow.getAllWindows().length === 0) createWindow();
+        mainWindow.loadUrl(`http://localhost:3030/`);
     })
 })
 
