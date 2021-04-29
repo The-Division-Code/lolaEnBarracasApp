@@ -212,7 +212,7 @@ module.exports = productsAPIController = {
     },
     subcategoriesById: (req, res) => {
 
-        db.Products_Subcateogies.findByPk(req.params.id)
+        db.Products_Subcategories.findByPk(req.params.id)
             .then(subcategory => {
 
                 let respuesta = {
@@ -372,7 +372,7 @@ module.exports = productsAPIController = {
                     meta: {
                         status: 200,
                         total: products.length,
-                        url: `http://localhost:3030/api/products/products_colors/${req.params.product}`
+                        url: `http://localhost:3030/api/products/products_colors/product/${req.params.product}`
                     },
                     data: products,
                 }
