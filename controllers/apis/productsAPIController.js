@@ -443,7 +443,7 @@ module.exports = productsAPIController = {
                     meta: {
                         status: 200,
                         total: waists.length,
-                        url: `http://localhost:3030/api/p_waists`
+                        url: `http://localhost:3030/api/products/p_waists`
                     },
                     data: waists
                 }
@@ -459,7 +459,7 @@ module.exports = productsAPIController = {
                 let respuesta = {
                     meta: {
                         status: 200,
-                        url: `http://localhost:3030/api/p_waists/${req.params.id}`
+                        url: `http://localhost:3030/api/products/p_waists/${req.params.id}`
                     },
                     data: waist
                 }

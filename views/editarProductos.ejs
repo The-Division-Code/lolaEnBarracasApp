@@ -3,39 +3,26 @@
 <div>
     <div class="container-fluid justify-content-center">
       <div class="row">
-        <div class="card col-3" style="width: 18rem;">
-          <img class="card-img-top" src="/images/index.jpg" alt="Card image cap"
-            style="max-height: 12rem;">
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Zapatos</li>
-              <li class="list-group-item">Morrison</li>
-              <li class="list-group-item">Negros</li>
-              <li class="list-group-item">$3500</li>
-            </ul>
-
-            <a href="" data-toggle="modal" data-target="#exampleModal2"> <button
-                class="btn-primary fa fa-edit"></button></a>
-            <button type="submit" class="btn-danger fa fa-trash" onclick="confirmacion('archivar');"></button>
+        <% productsList.forEach(product=>{ %>
+        
+          <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="/images/index.jpg" alt="Card image cap"
+              style="max-height: 12rem;">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%= product.category %> </li>
+                <li class="list-group-item"> <%= product.name %>  </li>
+                <li class="list-group-item"> color  </li>
+                <li class="list-group-item"> $<%= product.price %>  </li>
+              </ul>
+  
+              <a href="" data-toggle="modal" data-target="#exampleModal2"> <button
+                  class="btn-primary fa fa-edit"></button></a>
+              <button type="submit" class="btn-danger fa fa-trash" onclick="confirmacion('archivar');"></button>
+            </div>
           </div>
-        </div>
-        <div class="card col-3" style="width: 18rem;">
-          <img class="card-img-top" src="/images/index.jpg" alt="Card image cap"
-            style="max-height: 12rem;">
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Zapatos</li>
-              <li class="list-group-item">Morrison</li>
-              <li class="list-group-item">Negros</li>
-              <li class="list-group-item">$3500</li>
-            </ul>
 
-            <a href="" data-toggle="modal" data-target="#exampleModal2"> <button
-                class="btn-primary fa fa-edit"></button></a>
-            <button type="submit" class="btn-danger fa fa-trash"></button>
-          </div>
-        </div>
-
+        <% }) %> 
       </div>
     </div>
   </div>

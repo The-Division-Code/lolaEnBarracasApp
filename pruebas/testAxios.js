@@ -56,6 +56,30 @@
 // productsRequests.getColorsById(16)
 //     .then(color=> console.log(color.data))
 
-const productsRequests = require('../requests/productsRequests');
-productsRequests.getColorsByProdId(1036)
-    .then(color=> console.log(color.data))
+// const productsRequests = require('../requests/productsRequests');
+// productsRequests.getColorsByProdId(1036)
+//     .then(color=> console.log(color.data))
+
+// const productsRequests = require('../requests/productsRequests');
+//     productsRequests.getAllCategories()
+//     .then(categories=> console.log(categories.data))
+
+// const productsRequests = require('../requests/productsRequests');
+// productsRequests.getCategoriesById(31)
+//     .then(categories=> console.log(categories.data))
+
+// const productsRequests = require('../requests/productsRequests');
+//     productsRequests.getAllPWaists()
+//     .then(waists=> console.log(waists.data))
+
+// const productsRequests = require('../requests/productsRequests');
+// productsRequests.getPWaistsById(24)
+//     .then(waists=> console.log(waists.data))
+
+// const productsRequests = require('../requests/productsRequests');
+//     productsRequests.getAllPColors()
+//     .then(colors=> console.log(colors.data))
+
+// const productsRequests = require('../requests/productsRequests');
+// productsRequests.getPColosById(24)
+//     .then(colors=> console.log(colors.data))

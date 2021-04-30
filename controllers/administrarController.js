@@ -1,3 +1,7 @@
+const productsRequests = require('../requests/productsRequests.js')
+
+
+
 module.exports = administrarControllers = {
 
     agregar: (req, res) => {
@@ -9,8 +13,17 @@ module.exports = administrarControllers = {
         res.render('stock.ejs', {seccion: "stock"});
     },
     editar: (req, res) => {
+        productsRequests.getAllProducts()
 
-        res.render('editarProductos.ejs', {seccion: "editar"});
+        .then(products =>{
+            let productsList = products.data.data;
+
+            res.render('editarProductos.ejs', {
+                productsList: productsList, 
+                seccion: "editar"
+            });
+        })
+        .catch(error=>{console.log(error);})
     },
     archivados: (req, res) => {
 

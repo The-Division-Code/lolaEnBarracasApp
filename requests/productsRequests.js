@@ -99,6 +99,48 @@ const productsRequests = {
             method: 'GET',
             url: `/products/products_colors/product/${colorProdId}`
         })
+    },
+    getAllCategories: () =>{
+        return axios ({
+            ...defaults,
+            method: 'GET',
+            url: '/products/products_categories'
+        })
+    },
+    getCategoriesById: (category) =>{
+        return axios({
+            ...defaults,
+            method: 'GET',
+            url: `/products/products_categories/${category}`
+        })
+    },
+    getAllPWaists : () =>{
+        return axios({
+            ...defaults,
+            method: 'GET',
+            url: '/products/p_waists'
+        })
+    },
+    getPWaistsById: (waists) =>{
+        return axios({
+            ...defaults,
+            method: 'GET',
+            url: `/products/p_waists/${waists}`
+        })
+    },
+    getAllPColors: () =>{
+        return axios({
+            ...defaults,
+            method: 'GET',
+            url: '/products/p_colors'
+        })
+    },
+    getPColosById: (colors) =>{
+        return axios({
+            ...defaults,
+            method: 'GET',
+            url: `/products/p_colors/${colors}`
+        })
     }
 
 }
