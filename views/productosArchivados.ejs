@@ -1,40 +1,35 @@
-<%- include('partials/head.ejs') %> 
-<%- include('partials/header.ejs') %> 
-<div>
-    <h2>Productos archivados</h2>
-    <div class="container-fluid justify-content-center">
-      <div class="row">
-        <div class="card col-3" style="width: 18rem;">
-          <img class="card-img-top" src="/images/index.jpg" alt="Card image cap"
-            style="max-height: 12rem;">
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Zapatos</li>
-              <li class="list-group-item">Morrison</li>
-              <li class="list-group-item">Negros</li>
-              <li class="list-group-item">Talle 36</li>
-            </ul>
+<%- include('partials/head.ejs') %>
+  <%- include('partials/header.ejs') %>
+    <div>
+      <h2>Productos archivados</h2>
+      <div class="container-fluid justify-content-center">
+        <div class="row">
+          <% productsList.forEach(product=>{ %>
+            <% if (product.stock===0){ %>
 
-            <button type="submit" class="btn btn-success" onclick="confirmacion('restaurar');">Restaurar</button>
-            <button type="submit" class="btn btn-danger" onclick="confirmacion('eliminar');">Eliminar definitivamente</button>
-          </div>
-        </div>
-        <div class="card col-3" style="width: 18rem;">
-          <img class="card-img-top" src="/images/index.jpg" alt="Card image cap"
-            style="max-height: 12rem;">
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Zapatos</li>
-              <li class="list-group-item">Morrison</li>
-              <li class="list-group-item">Negros</li>
-              <li class="list-group-item">Talle 37</li>
-            </ul>
-
-            <button type="submit" class="btn btn-success">Restaurar</button>
-            <button type="submit" class="btn btn-danger">Eliminar definitivamente</button>
-          </div>
+              <div class="card col-3" style="width: 18rem;">
+                <img class="card-img-top" src="/images/index.jpg" alt="Card image cap" style="max-height: 12rem;">
+                <div class="card-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <%= product.category %>
+                    </li>
+                    <li class="list-group-item">
+                      <%= product.name %>
+                    </li>
+                    <li class="list-group-item"> Color</li>
+                  </ul>
+                  <form action="/administrar/archivados" method="get">
+                    <input class="d-none" type="number" value="<%= product.id %>">
+                    <button type="submit" class="btn btn-success">Restaurar</button>
+                  </form>
+                  <button type="submit" class="btn btn-danger" onclick="confirmacion('eliminar');">Eliminar
+                    definitivamente</button>
+                </div>
+              </div>
+              <% } %>
+                <% }) %>
         </div>
       </div>
     </div>
-  </div>
-<%- include('partials/footer.ejs') %> 
+    <%- include('partials/footer.ejs') %>

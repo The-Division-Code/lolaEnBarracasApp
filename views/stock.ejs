@@ -12,7 +12,7 @@
           <thead>
 
             <tr>
-
+            
               <th scope="col">Id producto</th>
               <th scope="col">Categoría</th>
               <th scope="col">Modelo</th>
@@ -22,15 +22,20 @@
           </thead>
 
           <tbody>
+            <% productsList.forEach(product=>{ %>
+              <% if (product.stock !== 0){ %>
             <tr>
-              <th scope="row">00000001</th>
-              <td>Zapatos</td>
-              <td>Morrison</td>
-              <td>Negro</td>
-              <td><a href="" data-toggle="modal" data-target="#exampleModal1"><i class="fa fa-edit"></i></a></td>
 
+              <th scope="row"> <%= product.id %> </th>
+              <td> <%= product.category %>  </td>
+              <td> <%= product.name %>  </td>
+              <td>color</td>
+              <td><a href="" data-toggle="modal" data-target="#exampleModal1"><i class="fa fa-edit"></i></a></td>
+               
             </tr>
-            <tr>
+            <% } %>
+              <% }) %>
+            <!-- <tr>
               <td scope="row">00000002</td>
               <td>Carteras</td>
               <td style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">Winehouse
@@ -45,7 +50,7 @@
               <td>Marron</td>
               <td><i class="fa fa-edit" aria-hidden="true"></i></td>
             </tr>
-            <tr>
+            <tr> -->
               <td></td>
               <td></td>
               <td></td>
