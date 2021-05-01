@@ -1,3 +1,4 @@
+const { read } = require("original-fs");
 const db = require("../database/models");
 const productsRequests = require("../requests/productsRequests.js");
 
@@ -52,28 +53,17 @@ module.exports = administrarControllers = {
       });
   },
   desarchivar: (req, res) => {
-    // db.Products.update({
-    //   stock: req.body.stock,
-    // }),
-    //   {
-    //     where: {
-    //       id: req.params.id,
-    //     }
-    //       .then((products) => {
-    //         let productsList = products.data.data;
-    //         res.render("productosArchivados.ejs", {
-    //           seccion: "archivados",
-    //           productsList: productsList,
-    //         });
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       }),
-    //   };
-    db.Products.findByPk(req.body.id)
-      .then((product) => {
-        console.log(product);
+    db.Products.update({
+      stock: 1
+    }, {
+      where: { id: req.body.id }
+    })
+      .then(() => {
+        res.redirect('/administrar/stock')
       })
-      .catch((error) => console.log(error));
+      .catch(error => {
+
+        console.log(error);
+      })
   },
 };

@@ -19,8 +19,8 @@
                     </li>
                     <li class="list-group-item"> Color</li>
                   </ul>
-                  <form action="/administrar/archivados" method="get">
-                    <input class="d-none" type="number" value="<%= product.id %>">
+                  <form action="/administrar/archivados?_method=PUT" method="POST">
+                    <input name="id" id="id" class="d-none" type="text" value="<%= product.id %>">
                     <button type="submit" class="btn btn-success">Restaurar</button>
                   </form>
                   <button type="submit" class="btn btn-danger" onclick="confirmacion('eliminar');">Eliminar
