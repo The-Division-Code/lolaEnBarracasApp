@@ -4,6 +4,7 @@ const router = express.Router();
 const administrarController = require('../controllers/administrarController.js');
 
 router.get('/agregar', administrarController.agregar);
+router.post('/agregar', administrarController.agregando)
 router.get('/stock', administrarController.stock);
 router.get('/editar', administrarController.editar);
 router.get('/archivados', administrarController.archivados);

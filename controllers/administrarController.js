@@ -4,8 +4,34 @@ const productsRequests = require("../requests/productsRequests.js");
 
 module.exports = administrarControllers = {
   agregar: (req, res) => {
-    res.render("agregarProductos.ejs", { seccion: "agregar" });
+    let categories = productsRequests.getAllCategories();
+    let colors = productsRequests.getAllPColors();
+
+    Promise.all([categories, colors])
+      .then(([categorias, colores]) => {
+        res.render("agregarProductos.ejs", {
+          categorias: categorias.data.data,
+          colores: colores.data.data,
+          seccion: "productos",
+        });
+      })
+      .catch((error) => console.log(error));
   },
+  agregando: (req, res) => {
+    db.Products.create({
+      name: req.body.name,
+      category: req.body.categories,
+      subcategory: req.body.subcategories,
+      price: req.body.price,
+      strikethrough_price: req.body.listPrice,
+  //   }).then((product) => {
+  //     db.Products_Colors.create({
+  //       product_id: p
+  //     });
+   })
+   .then(() => res.redirect('/administrar/stock'))
+   .catch(error => console.log(error))
+ },
   stock: (req, res) => {
     productsRequests
       .getAllProducts()
@@ -52,18 +78,21 @@ module.exports = administrarControllers = {
         console.log(error);
       });
   },
+  // Terminado, funciona ok.
   desarchivar: (req, res) => {
-    db.Products.update({
-      stock: 1
-    }, {
-      where: { id: req.body.id }
-    })
+    db.Products.update(
+      {
+        stock: 1,
+      },
+      {
+        where: { id: req.body.id },
+      }
+    )
       .then(() => {
-        res.redirect('/administrar/stock')
+        res.redirect("/administrar/stock");
       })
-      .catch(error => {
-
+      .catch((error) => {
         console.log(error);
-      })
+      });
   },
 };

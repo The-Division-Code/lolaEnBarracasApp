@@ -12,7 +12,8 @@ module.exports = (sequelize, dataTypes) => {
         
         code:{
             type: dataTypes.STRING(50),
-            allowNull: false
+            allowNull: false,
+            defaultValue: ''
         },
         
         name:{
@@ -22,12 +23,14 @@ module.exports = (sequelize, dataTypes) => {
         
         short_desc:{
             type: dataTypes.STRING(500),
-            allowNull: false
+            allowNull: false,
+            defaultValue: ''
         },
         
         long_desc:{
             type: dataTypes.TEXT('long'),
-            allowNull: false
+            allowNull: false,
+            defaultValue: ''
         },
         
         sub_type:{
@@ -68,7 +71,8 @@ module.exports = (sequelize, dataTypes) => {
         },
         stock:{
             type: dataTypes.INTEGER(11),
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         shows_stock:{
             type: dataTypes.ENUM('Y','N'),
@@ -77,23 +81,28 @@ module.exports = (sequelize, dataTypes) => {
         },
         size:{
             type: dataTypes.STRING(50),
-            allowNull: false
+            allowNull: false,
+            defaultValue: ''
         },
         measures:{
             type: dataTypes.STRING(50),
-            allowNull: false
+            allowNull: false,
+            defaultValue: ''
         },
         material:{
             type: dataTypes.STRING(50),
-            allowNull: false
+            allowNull: false,
+            defaultValue: ''
         },
         colors:{
             type: dataTypes.STRING(250),
-            allowNull: false
+            allowNull: false,
+            defaultValue: ''
         },
         published:{
             type: dataTypes.ENUM('Y','N'),
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'N'
         },
         price3:{
             type: dataTypes.DECIMAL(10,2),
