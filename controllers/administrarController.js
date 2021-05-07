@@ -15,7 +15,7 @@ module.exports = administrarControllers = {
 
           categorias: categorias.data.data,
           colores: colores.data.data,
-          seccion: "productos",
+          seccion: "agregar",
         });
       })
       .catch((error) => console.log(error));

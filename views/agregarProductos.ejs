@@ -9,9 +9,9 @@
         <div class="row justify-content-around">
 
           <h3>Agregar un producto</h3>
-          <form action="/administrar/agregar" method="POST" class=" col-12">
+          <form action="/administrar/agregar" method="POST" class="col-12" >
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="form">
 
               <div class="form-group col-12">
 
@@ -41,14 +41,23 @@
 
               <div class="form-group col-12">
 
-                <select name="color" id="" class="col-12 form-control">
+                <select name="color1" id="" class="col-12 form-control">
 
                   <option value="" disabled selected>Selecciona un color...</option>
                   <% for( let i = 0; i < colores.length; i++ ) { %>
                     <option value="<%=colores[i].id %>"> <%= colores[i].desc %>  </option> 
                   <% } %>
                 </select>
+                
               </div>
+
+              
+
+              <div class="form-group col-12" id="colorButtonContainer">
+
+                <button type="button" class="btn btn-primary btn-block" id="addColor" onclick="addColorInput()">Agregar otro color</button>
+              </div>
+              
 
               <div class="form-group col-12">
 
