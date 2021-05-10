@@ -25,7 +25,7 @@ module.exports = productsAPIController = {
     res.json(respuesta);
   },
   products: (req, res) => {
-    db.Products.findAll()
+    db.Products.findAll({order:[["name", "ASC"]]})
       .then((products) => {
         for (let i = 0; i < products.length; i++) {
           products[i].setDataValue;

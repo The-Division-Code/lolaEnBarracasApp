@@ -92,6 +92,22 @@ module.exports = administrarControllers = {
         console.log(error);
       });
   },
+  archivar: (req, res) => {
+    db.Products.update(
+      {
+        stock: 0,
+      },
+      {
+        where: { id: req.body.id },
+      }
+    )
+      .then(() => {
+        res.redirect("/administrar/editar");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   archivados: (req, res) => {
     productsRequests
       .getAllProducts()

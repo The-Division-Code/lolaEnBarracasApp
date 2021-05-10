@@ -20,7 +20,10 @@
   
               <a href="" data-toggle="modal" data-target="#exampleModal2"> <button
                   class="btn-primary fa fa-edit"></button></a>
+                  <form action="/administrar/editar?_method=PUT" method="POST">
+                    <input name="id" id="id" class="d-none" type="text" value="<%= product.id %> ">
               <button type="submit" class="btn-danger fa fa-trash" onclick="confirmacion('archivar');"></button>
+            </form>
             </div>
           </div>
           <% } %>

@@ -14,40 +14,32 @@
               <form action="" class=" col-12">
   
                 <div class="row justify-content-around">
-  
+
                   <div class="form-group col-12">
   
-                    <select class="form-control">
-  
-                      <option value="" disabled selected>Selecciona una categoría...</option>
-                      <option value="">Carteras</option>
-                      <option value="">Zapatos</option>
-                      <option value="">Accesorios</option>
+                    <select name="models" id="models" class="col-12 form-group">
+                      <option value="" disabled selected>Elija un modelo...</option>
+                      <% for( let i = 0; i < productos.length; i++ ) { %>
+                        <% if (productos.stock !== 0) { %>
+                          <option value="<%=productos[i].id %>"> <%= productos[i].name %>  </option>
+                        <% } %>
+                      <% } %>
                     </select>
                   </div>
   
-                  <div class="form-group col-12">
-  
-                    <input class="col-12 form-control" type="text" placeholder="Modelo">
-                  </div>
-  
   
                   <div class="form-group col-12">
   
-                    <select name="" id="" class="col-12 form-control">
+                    <select name="colors" id="colors" class="col-12 form-control">
   
                       <option value="" disabled selected>Selecciona un color...</option>
-                      <option value="">Negro</option>
-                      <option value="">Marrón</option>
-                      <option value="">Blanco</option>
-                      <option value="">Rojo</option>
-                      <option value="">Azul</option>
+                     
                     </select>
                   </div>
   
                   <div class="form-group col-12">
   
-                    <select class="col-12 form-control">
+                    <select name="waists" id="waists" class="col-12 form-control">
   
                       <option value="" disabled selected>Selecciona un talle...</option>
                       <option value="">35</option>
@@ -94,5 +86,5 @@
         </div>
       </div>
 
-      
+  <script src="/js/buscarProducto.js"></script>
   <%- include('partials/footer.ejs') %> 
