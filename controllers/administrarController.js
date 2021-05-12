@@ -51,6 +51,7 @@ module.exports = administrarControllers = {
 
             product_id: lastId + 1,
             waist_id: waist.id,
+            color_id: 0,
             stock_lola1013: 0,
             stock_lola774: 0,
             stock_total: 0 // Para editar el stock, se usa eval(stock1 + stock2) con string interpolation.

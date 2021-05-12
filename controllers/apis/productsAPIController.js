@@ -446,4 +446,28 @@ module.exports = productsAPIController = {
         console.log(error);
       });
   },
+  productFiltered: (req, res) => {
+    db.Products_Waists.findOne({
+      where:{
+        [db.Sequelize.Op.and]:{
+          product_id: req.params.id,
+          waist_id: req.params.waist_id,
+          color_id: req.params.color_id
+        }
+      }
+    })
+    .then(product => {
+
+      let respuesta = {
+        meta: {
+          status: 200,
+          url: `http://localhost:3030/api/products/search/${req.params.id}/${req.params.waist_id}/${req.params.color_id}`
+        },
+        data: product
+      }
+
+      product == null ? res.send("No encontrado") : res.json(respuesta);
+    })
+    .catch(error => console.log(error))
+  }
 };

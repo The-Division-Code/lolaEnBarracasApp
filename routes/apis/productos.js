@@ -32,4 +32,6 @@ router.get('/p_waists/:id', productsAPIController.pWaistsById);
 
 router.get('/p_colors', productsAPIController.pColors);
 router.get('/p_colors/:id', productsAPIController.pColorsById);
+
+router.get('/search/:id/:waist_id/:color_id', productsAPIController.productFiltered)
 module.exports = router;
