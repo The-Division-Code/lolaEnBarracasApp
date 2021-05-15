@@ -317,7 +317,7 @@ module.exports = productsAPIController = {
           meta: {
             status: 200,
             total: products.length,
-            url: `http://localhost:3030/api/products/products_colors/product/${req.params.product}`,
+            url: `http://localhost:3030/api/products/products_colors/product/${req.params.product_id}`,
           },
           data: products,
         };

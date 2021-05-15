@@ -15,28 +15,18 @@
             <tr>
             
               <th scope="col">Id producto</th>
-              <th scope="col">Categoría</th>
               <th scope="col">Modelo</th>
+              <th scope="col">Categoría</th>
               <th scope="col">Color</th>
               <th scope="col"></th>
               <th scope="col">Código QR </th>
             </tr>
           </thead>
 
-          <tbody>
-            <% productsList.forEach(product=>{ %>
-              <% if (product.stock !== 0){ %>
-            <tr>
-
-              <th scope="row" id="productId"> <%= product.id %> </th>
-              <td> <%= product.category %>  </td>
-              <td > <%= product.name %>  </td>
-              <td id="productColor">color</td>
-              <td><a href="" data-toggle="modal" data-target="#exampleModal1"><i class="fa fa-edit"></i></a></td>
-              <td id="qrcode"></td>
+          <tbody id="bodyTable">
+            <tr id="tBodyEnd">
+              <th scope="col">asd</th>
             </tr>
-            <% } %>
-              <% }) %>
           </tbody>
         </table>
 
@@ -114,6 +104,7 @@
         </div>
       </div>
     </div>
-    <script src="/js/qrcode.js"></script>
-    <script src="/js/qrfunction.js"></script>
+    <script src="/js/stock.js"></script>
+   <!--  <script src="/js/qrcode.js"></script>
+    <script src="/js/qrfunction.js"></script> -->
     <%- include('partials/footer.ejs') %>

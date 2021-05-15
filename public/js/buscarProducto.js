@@ -43,7 +43,6 @@ function getWaistsById(id){
             waists.innerHTML += `<option value= "${waist.data.id}"> ${waist.data.desc}</option>`
         })
         .catch(error => console.log(error))
-
 }
 
 function searchProduct(){
@@ -89,9 +88,7 @@ function searchProduct2(){
             ]
 
             functionArray.forEach(func => {
-                setTimeout(() => {
-                    func
-                }, 1000);
+                func
             })
 
             /* getProductById(product.data.product_id)
@@ -104,11 +101,17 @@ function searchProduct2(){
         })
 }
 
-let inputQR = document.getElementById('input-QR') // http://localhost:3030/api/search/1333/4/26 http://localhost:3030/api/search/1332/5/20
+function searchProduct3(){
 
-function searchWithQR(){
+    fetch(`http://localhost:3030/api/products/search/${models.value}/${waists.value}/${colors.value}`)
+        .then(response => response.json())
+        .then(product => {
+            getProductById(product.data.product_id)
+            getColorNameById(product.data.product_id)
+            getWaistNumberById(product.data.product_id)
 
-    fetch(inputQR.value)
+        })
+        .catch(error => console.log(error))
 }
 
 function getProductById(id){
@@ -116,10 +119,32 @@ function getProductById(id){
     fetch(`http://localhost:3030/api/products/products/${id}`)
         .then(response => response.json())
         .then(product => {
-            let nombre = document.createElement('h5')
-            nombre.className = 'card-title'
-            nombre.innerText = `Modelo: ${product.data.name}`
-            result.insertBefore(nombre, addButton)
+            let modelInput = document.getElementById('model')
+            modelInput.value = product.data.name
+        })
+        .catch(error => console.log(error))
+}
+
+function getColorNameById(id){
+
+    fetch(`http://localhost:3030/api/products/p_colors/${id}`)
+        .then(response => response.json())
+        .then(color => {
+            let colorInput = document.getElementById('color')
+            colorInput.value = color.data.desc
+        })
+        .catch(error => console.log(error))
+}
+
+function getWaistNumberById(id){
+
+    fetch(`http://localhost:3030/api/products/p_waists/${id}`)
+        .then(response => response.json())
+        .then(waist => {
+            let waistElement = document.createElement('h5')
+            waistElement.className = 'card-title'
+            waistElement.innerText = `Talle: ${waist.data.desc}`
+            result.insertBefore(waistElement, addButton)
         })
         .catch(error => console.log(error))
 }
@@ -129,6 +154,7 @@ function getProductStock1(product_id, waist_id, color_id){
     fetch(`http://localhost:3030/api/products/search/${product_id}/${waist_id}/${color_id}`)
         .then(response => response.json())
         .then(stock => {
+            let stockInput = document.getElementById('stock')
             let stockElement1 = document.createElement('h5')
             stockElement1.className = 'card-title'
             stockElement1.innerText = `Stock 1013: ${stock.data.stock_lola1013}`
@@ -147,31 +173,7 @@ function getProductStock2(product_id, waist_id, color_id){
             stockElement2.innerText = `Stock 774: ${stock.data.stock_lola774}`
             result.insertBefore(stockElement2, addButton)
         })
-}
-
-function getColorNameById(id){
-
-    fetch(`http://localhost:3030/api/products/p_colors/${id}`)
-        .then(response => response.json())
-        .then(color => {
-            let colorElement = document.createElement('h5')
-            colorElement.className = 'card-title'
-            colorElement.innerText = `Color: ${color.data.desc}`
-            result.insertBefore(colorElement, addButton)
-        })
         .catch(error => console.log(error))
-}
-
-function getWaistNumberById(id){
-
-    fetch(`http://localhost:3030/api/products/p_waists/${id}`)
-        .then(response => response.json())
-        .then(waist => {
-            let waistElement = document.createElement('h5')
-            waistElement.className = 'card-title'
-            waistElement.innerText = `Talle: ${waist.data.desc}`
-            result.insertBefore(waistElement, addButton)
-        })
 }
 
 function getPriceById(id){
@@ -184,6 +186,7 @@ function getPriceById(id){
             priceElement.innerText = `Precio: ${price.data.price}`
             result.insertBefore(priceElement, addButton)
         })
+        .catch(error => console.log(error))
 }
 
 function getStrikethroughPriceById(id){
@@ -196,6 +199,7 @@ function getStrikethroughPriceById(id){
             priceElement.innerText = `Lista: ${price.data.strikethrough_price}`
             result.insertBefore(priceElement, addButton)
         })
+        .catch(error => console.log(error))
 }
 
 function getProductImageById(id){
@@ -203,3 +207,4 @@ function getProductImageById(id){
     
 }
 /* colors.innerHTML ='<option value="" disabled selected>Selecciona un color...</option>'; */
+

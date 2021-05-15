@@ -1,70 +1,103 @@
-<%- include('partials/head.ejs') %> 
-<%- include('partials/header.ejs') %> 
+<%- include('partials/head.ejs') %>
+  <%- include('partials/header.ejs') %>
 
     <!-- Sección productos -->
-      <div>
-  
-        <div class="row">
-  
-          <div class="col-4">
-  
-            <div class="row justify-content-around">
-  
-              <h3>Busqueda de Productos</h3>
-              <form action="" class=" col-12" ">
-  
-                <div class="row justify-content-around">
+    <div>
 
-                  <div class="form-group col-12">
+      <div class="row">
+
+        <div class="col-4">
+
+          <div class="row justify-content-around">
+
+            <h3>Busqueda de Productos</h3>
+            <form action="" class=" col-12" ">
   
-                    <select name="models" id="models" class="col-12 form-group" onchange="findColorsByModel(); findWaistsByModel();">
-                      <option value="" disabled selected>Elija un modelo...</option>
-                      <% for( let i = 0; i < productos.length; i++ ) { %>
-                        <% if (productos.stock !== 0) { %>
-                          <option value="<%=productos[i].id %>"> <%= productos[i].name %>  </option>
-                        <% } %>
+                <div class=" row justify-content-around">
+
+              <div class="form-group col-12">
+
+                <select name="models" id="models" class="col-12 form-group"
+                  onchange="findColorsByModel(); findWaistsByModel();">
+                  <option value="" disabled selected>Elija un modelo...</option>
+                  <% for( let i=0; i < productos.length; i++ ) { %>
+                    <% if (productos.stock !==0) { %>
+                      <option value="<%=productos[i].id %>">
+                        <%= productos[i].name %>
+                      </option>
                       <% } %>
-                    </select>
-                  </div>
-  
-  
-                  <div class="form-group col-12">
-  
-                    <select name="colors" id="colors" class="col-12 form-control">
-  
-                      <option value="" disabled selected>Selecciona un color...</option>
-                     
-                    </select>
-                  </div>
-  
-                  <div class="form-group col-12">
-  
-                    <select name="waists" id="waists" class="col-12 form-control">
-  
-                      <option value="" disabled selected>Selecciona un talle...</option>
-                      
-                    </select>
-                  </div>
-  
-                  <button type="reset" class="btn btn-danger col-5">Borrar</button>
-  
-                  <button type="button" class="btn btn-primary col-5" onclick="searchProduct2();">Buscar</button>
-  
-                </div>
-              </form>
-            </div>
+                        <% } %>
+                </select>
+              </div>
+
+
+              <div class="form-group col-12">
+
+                <select name="colors" id="colors" class="col-12 form-control">
+
+                  <option value="" disabled selected>Selecciona un color...</option>
+
+                </select>
+              </div>
+
+              <div class="form-group col-12">
+
+                <select name="waists" id="waists" class="col-12 form-control">
+
+                  <option value="" disabled selected>Selecciona un talle...</option>
+
+                </select>
+              </div>
+
+              <button type="reset" class="btn btn-danger col-5">Borrar</button>
+
+              <button type="button" class="btn btn-primary col-5" onclick="searchProduct2();">Buscar</button>
+
           </div>
-  
-          <div class="container-fluid col-8" id="result">
-  
-            <h3>Resultado</h3>
-  
-            
-            <a href="#" class="btn btn-primary" id="addButton">Agregar</a>
-          </div>
-  
+          </form>
         </div>
       </div>
 
-  <script src="/js/buscarProducto.js"></script>
-  <%- include('partials/footer.ejs') %> 
+      <div class="container-fluid col-8" id="result">
+        <h3>Resultado</h3>
+        <div class="row">
+          <form action="" class="col-6">
+            <div class="form-group">
+              <label for="model">Modelo:</label>
+              <input type="text" id="model" class="border-0" disabled>
+            </div>
+            <div class="form-group">
+              <label for="color">Color:</label>
+              <input type="text" id="color" class="border-0" disabled>
+            </div>
+            <div class="form-group">
+              <label for="waist">Talle:</label>
+              <input type="text" id="waist" class="border-0" disabled>
+            </div>
+            <div class="form-group">
+              <label for="stock-1013">Stock Lola 1013:</label>
+              <input type="text" id="stock-1013" class="border-0" disabled>
+            </div>
+            <div class="form-group">
+              <label for="stock-774">Stock Lola 774</label>
+              <input type="text" id="stock-774" class="border-0" disabled>
+            </div>
+            <div class="form-group">
+              <label for="price">Precio:</label>
+              <input type="text" id="price" class="border-0" disabled>
+            </div>
+            <div class="form-group">
+              <label for="strikethrough-price">Precio de Lista:</label>
+              <input type="text" id="strikethrough-price" class="border-0" disabled>
+            </div>
+  
+            <button type="submit" class="btn btn-primary btn-lg">Agregar</button>
+  
+          </form>
+        </div>
+        
+      </div>
+    </div>
+
+    <script src="/js/buscarProducto.js"></script>
+    <%- include('partials/footer.ejs') %>
