@@ -1,6 +1,7 @@
 <%- include('partials/head.ejs') %>
   <%- include('partials/header.ejs') %>
 
+
     <div>
 
       <div class="container-fluid col-8">
@@ -18,6 +19,7 @@
               <th scope="col">Modelo</th>
               <th scope="col">Color</th>
               <th scope="col"></th>
+              <th scope="col">Código QR </th>
             </tr>
           </thead>
 
@@ -26,35 +28,15 @@
               <% if (product.stock !== 0){ %>
             <tr>
 
-              <th scope="row"> <%= product.id %> </th>
+              <th scope="row" id="productId"> <%= product.id %> </th>
               <td> <%= product.category %>  </td>
-              <td> <%= product.name %>  </td>
-              <td>color</td>
+              <td > <%= product.name %>  </td>
+              <td id="productColor">color</td>
               <td><a href="" data-toggle="modal" data-target="#exampleModal1"><i class="fa fa-edit"></i></a></td>
-               
+              <td id="qrcode"></td>
             </tr>
             <% } %>
               <% }) %>
-            <!-- <tr>
-              <td scope="row">00000002</td>
-              <td>Carteras</td>
-              <td style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">Winehouse
-              </td>
-              <td>Roja</td>
-              <td><i class="fa fa-edit" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-              <th scope="row">00000003</th>
-              <td>Accesorios</td>
-              <td>Cinturón Jagger</td>
-              <td>Marron</td>
-              <td><i class="fa fa-edit" aria-hidden="true"></i></td>
-            </tr>
-            <tr> -->
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
           </tbody>
         </table>
 
@@ -132,5 +114,6 @@
         </div>
       </div>
     </div>
-
+    <script src="/js/qrcode.js"></script>
+    <script src="/js/qrfunction.js"></script>
     <%- include('partials/footer.ejs') %>

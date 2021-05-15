@@ -4,6 +4,7 @@ module.exports = ventasController = {
 
         res.render('nuevoRemito',{seccion: "remito"});
     },
+
     historial: (req, res) => {
 
         res.render('historialRemitos',{seccion: "historial"});

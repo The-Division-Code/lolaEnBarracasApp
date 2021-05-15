@@ -29,6 +29,7 @@
     "express-validator": "^6.10.0",
     "method-override": "^3.0.0",
     "mysql2": "^2.2.5",
+    "qrcode": "^1.4.4",
     "sequelize": "^6.6.2"
   },
   "config": {

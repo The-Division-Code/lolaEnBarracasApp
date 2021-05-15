@@ -1,5 +1,6 @@
 const db = require("../database/models");
 const productsRequests = require("../requests/productsRequests.js");
+const qrcode = require('qrcode')
 
 module.exports = administrarControllers = {
 
@@ -10,7 +11,7 @@ module.exports = administrarControllers = {
 
     Promise.all([categories, colors])
       .then(([categorias, colores]) => {
-
+        
         res.render("agregarProductos.ejs", {
 
           categorias: categorias.data.data,
@@ -71,6 +72,7 @@ module.exports = administrarControllers = {
         res.render("stock.ejs", {
           productsList: productsList,
           seccion: "stock",
+          qrcode: qrcode
         });
       })
       .catch((error) => {
