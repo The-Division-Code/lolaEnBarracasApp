@@ -13,6 +13,7 @@ const routerProductos = require('./routes/productos.js');
 
 const routerAPIIndex = require('./routes/apis/index.js');
 const routerAPIProducts = require('./routes/apis/productos.js');
+const routerAPISells = require('./routes/apis/ventas.js');
 
 webApp.set('views', path.join(__dirname, 'views'));
 webApp.set('view engine', 'ejs');
@@ -32,6 +33,7 @@ webApp.use('/ventas', routerVentas);
 
 webApp.use('/api/index', routerAPIIndex);
 webApp.use('/api/products', routerAPIProducts);
+webApp.use('/api/sells', routerAPISells)
 
 function createWindow(){
 

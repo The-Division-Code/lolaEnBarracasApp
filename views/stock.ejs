@@ -8,15 +8,14 @@
 
         <h3>Stock de productos</h3>
 
-        <table class="table table-striped">
+        <table class="table table-striped" id="stock-table">
 
           <thead>
 
             <tr>
-            
+
               <th scope="col">Id producto</th>
               <th scope="col">Modelo</th>
-              <th scope="col">Categoría</th>
               <th scope="col">Color</th>
               <th scope="col"></th>
               <th scope="col">Código QR </th>
@@ -24,12 +23,11 @@
           </thead>
 
           <tbody id="bodyTable">
+
             <tr id="tBodyEnd">
-              <th scope="col">asd</th>
             </tr>
           </tbody>
         </table>
-
       </div>
     </div>
 
@@ -37,7 +35,7 @@
       <div class="modal-dialog modal-dialog-scrollable" style="max-width: 80%!important;">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel1">Stocks de talles</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -53,58 +51,21 @@
                     <th scope="col">Stock total</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <form action="">
-                    <tr>
-                      <th scope="row">35</th>
-                      <td><input type="number" value="5"></td>
-                      <td><input type="number" value="6"></td>
-                      <td>11</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">36</th>
-                      <td><input type="number" value="7"></td>
-                      <td><input type="number" value="1"></td>
-                      <td>8</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">37</th>
-                      <td><input type="number" value="4"></td>
-                      <td><input type="number" value="3"></td>
-                      <td>7</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">38</th>
-                      <td><input type="number" value="10"></td>
-                      <td><input type="number" value="10"></td>
-                      <td>20</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">39</th>
-                      <td><input type="number" value="6"></td>
-                      <td><input type="number" value="2"></td>
-                      <td>8</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">40</th>
-                      <td><input type="number" value="1"></td>
-                      <td><input type="number" value="8"></td>
-                      <td>9</td>
-                    </tr>
+                <tbody id="waist-list">
 
+                  
                 </tbody>
               </table>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="reset" class="btn btn-secondary">Deshacer cambios</button>
-            <button type="submit" class="btn btn-primary">Guardar cambios</button>
-            </form>
+
+
           </div>
         </div>
       </div>
     </div>
     <script src="/js/stock.js"></script>
-   <!--  <script src="/js/qrcode.js"></script>
+    <!--  <script src="/js/qrcode.js"></script>
     <script src="/js/qrfunction.js"></script> -->
     <%- include('partials/footer.ejs') %>

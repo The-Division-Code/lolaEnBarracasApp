@@ -1,9 +1,16 @@
+/**
+ * Captura de elementos
+ */
+
 let models = document.getElementById('models')
 let colors = document.getElementById('colors')
 let waists = document.getElementById('waists')
 let result = document.getElementById('result');
 let addButton = document.getElementById('addButton')
 
+/**
+ * Busca colores por modelo seleccionado y genera el select con los colores disponibles del modelo seleccionado.
+ */
 function findColorsByModel() {
     colors.innerHTML = '<option value="" disabled selected>Selecciona un color...</option>';
     fetch(`http://localhost:3030/api/products/products_colors/product/${models.value}`)
@@ -16,6 +23,9 @@ function findColorsByModel() {
         .catch(error => console.log(error))
 }
 
+/**
+ * Busca talles por modelo seleccionados, y genera el select con los talles disponibles.
+ */
 function findWaistsByModel(){
     waists.innerHTML = '<option value="" disabled selected>Selecciona un talle...</option>'
     fetch(`http://localhost:3030/api/products/products_waists/${models.value}`)
@@ -27,6 +37,9 @@ function findWaistsByModel(){
         })
 }
 
+/** 
+ * Busca el color por id, proveniente del modelo.
+ */
 function getColorsById(id) {
     fetch(`http://localhost:3030/api/products/p_colors/${id}`)
         .then(response => response.json())
@@ -36,6 +49,9 @@ function getColorsById(id) {
         .catch(error => console.log(error))
 }
 
+/**
+ * Busca el talle por el id proveniente del modelo. 
+ */
 function getWaistsById(id){
     fetch(`http://localhost:3030/api/products/p_waists/${id}`)
         .then(response => response.json())
@@ -45,6 +61,9 @@ function getWaistsById(id){
         .catch(error => console.log(error))
 }
 
+/**
+ * Genera la búsqueda del producto según parámetros.
+ */
 function searchProduct(){
 
     fetch(`http://localhost:3030/api/products/search/${models.value}/${waists.value}/${colors.value}`)
@@ -70,7 +89,9 @@ function searchProduct(){
         .catch(error => console.log(error))
 }
 
-
+/**
+ * Genera la búsqueda del producto según parámetros (Creo que esta es la actual, fijarse en vista correspondiente.)
+ */
 function searchProduct2(){
 
     fetch(`http://localhost:3030/api/products/search/${models.value}/${waists.value}/${colors.value}`)
@@ -124,7 +145,9 @@ function getProductById(id){
         })
         .catch(error => console.log(error))
 }
-
+/**
+ * Devuelve nombre del color por id, basado en el producto buscado.
+ */
 function getColorNameById(id){
 
     fetch(`http://localhost:3030/api/products/p_colors/${id}`)
@@ -135,73 +158,76 @@ function getColorNameById(id){
         })
         .catch(error => console.log(error))
 }
-
+/**
+ * Devuelve número de talle por id, basado en el producto.
+ */
 function getWaistNumberById(id){
 
     fetch(`http://localhost:3030/api/products/p_waists/${id}`)
         .then(response => response.json())
         .then(waist => {
-            let waistElement = document.createElement('h5')
-            waistElement.className = 'card-title'
-            waistElement.innerText = `Talle: ${waist.data.desc}`
-            result.insertBefore(waistElement, addButton)
+            let waistInput = document.getElementById('waist')
+            waistInput.value = waist.data.desc
         })
         .catch(error => console.log(error))
 }
-
+/** 
+ * Devuelve stock de sucursal 1013
+ */
 function getProductStock1(product_id, waist_id, color_id){
 
     fetch(`http://localhost:3030/api/products/search/${product_id}/${waist_id}/${color_id}`)
         .then(response => response.json())
         .then(stock => {
-            let stockInput = document.getElementById('stock')
-            let stockElement1 = document.createElement('h5')
-            stockElement1.className = 'card-title'
-            stockElement1.innerText = `Stock 1013: ${stock.data.stock_lola1013}`
-            result.insertBefore(stockElement1, addButton)
+            let stock1013Input = document.getElementById('stock-1013')
+            stock1013Input.value = stock.data.stock_lola1013
         })
         .catch(error => console.log(error))
 }
-
+/** 
+ * Devuelve stock de sucursal 774
+ */
 function getProductStock2(product_id, waist_id, color_id){
 
     fetch(`http://localhost:3030/api/products/search/${product_id}/${waist_id}/${color_id}`)
         .then(response => response.json())
         .then(stock => {
-            stockElement2 = document.createElement('h5')
-            stockElement2.className = 'card-title'
-            stockElement2.innerText = `Stock 774: ${stock.data.stock_lola774}`
-            result.insertBefore(stockElement2, addButton)
+            let stock774Input = document.getElementById('stock-774')
+            stock774Input.value = stock.data.stock_lola774
         })
         .catch(error => console.log(error))
 }
-
+/** 
+ * Devuelve precio final por id
+ */
 function getPriceById(id){
 
     fetch(`http://localhost:3030/api/products/products/${id}`)
         .then(response => response.json())
         .then(price => {
-            let priceElement = document.createElement('h5')
-            priceElement.className = 'card-title'
-            priceElement.innerText = `Precio: ${price.data.price}`
-            result.insertBefore(priceElement, addButton)
+            let priceInput = document.getElementById('price');
+            priceInput.value = price.data.price
         })
         .catch(error => console.log(error))
 }
-
+/** 
+ * Devuelve precio de lista por id
+ */
 function getStrikethroughPriceById(id){
 
     fetch(`http://localhost:3030/api/products/products/${id}`)
         .then(response => response.json())
         .then(price => {
-            let priceElement = document.createElement('h5')
-            priceElement.className = 'card-title'
-            priceElement.innerText = `Lista: ${price.data.strikethrough_price}`
-            result.insertBefore(priceElement, addButton)
+            let strikethroughPriceInput = document.getElementById('strikethrough-price');
+            strikethroughPriceInput.value = price.data.strikethrough_price
         })
         .catch(error => console.log(error))
 }
 
+/**
+ * Al no tener api de imágenes, esto está a completar. Basarse en lógica de este archivo cuando esté.
+ *  
+ */
 function getProductImageById(id){
 
     

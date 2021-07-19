@@ -11,7 +11,7 @@ module.exports = administrarControllers = {
 
     Promise.all([categories, colors])
       .then(([categorias, colores]) => {
-        
+
         res.render("agregarProductos.ejs", {
 
           categorias: categorias.data.data,
@@ -78,6 +78,22 @@ module.exports = administrarControllers = {
       .catch((error) => {
         console.log(error);
       });
+  },
+  editarStock: (req, res) => {
+    console.log(req.body.product_id)
+    db.Products_Waists.update({
+      stock_lola1013: req.body.stock_lola1013_1,
+      stock_lola774: req.body.stock_lola774_1,
+      stock_total: eval(req.body.stock_lola1013_1 + req.body.stock_lola774_1)
+    }, {
+      where: {
+        product_id: req.body.product_id,
+      }
+    })
+      .then(() => {
+        res.redirect('/')
+      })
+      .catch(error => console.log(error))
   },
   editar: (req, res) => {
     productsRequests

@@ -2,6 +2,9 @@ let form = document.getElementById('form')
 let categories = document.getElementById('categories');
 let subcategories = document.getElementById('subcategories');
 
+/**
+ * Busca subcategorías según categoría capturada.
+ */
 function showSubcategories(){
     subcategories.innerHTML = '<option value="" disabled selected>Selecciona una sub-categoría...</option>';
     fetch(`http://localhost:3030/api/products/products_subcategories/cat/${categories.value}`)
@@ -22,7 +25,9 @@ function showSubcategories(){
 let addColorButton = document.getElementById('addColorButton');
 let colorButtonContainer = document.getElementById('colorButtonContainer');
 let contador = 1;
-
+/*** 
+ * Agrega un input de color, para agregar más colores. EStá hecha la lógica en backend?
+ */
 function addColorInput() {
     let color = document.createElement('div')
     color.className = 'col-12 form-group'
@@ -44,6 +49,9 @@ function addColorInput() {
         })
 }
 
+/** 
+ * Borra color seleccionado.
+ */
 function deleteColorX(n) {
     let colorDiv = document.getElementById(`divColor${n}`);
     colorDiv.remove()
@@ -51,14 +59,18 @@ function deleteColorX(n) {
 
 let colors = document.getElementById('colors')
 let colorsList = []
-
+/***
+ * Agrega color seleccionado.
+ */
 function addColor(n) {
     let colorInput = document.getElementById(`color${n}`);
     colorsList.push(colorInput.value)
 
     colors.value = colorsList;
 }
-
+/*** 
+ * No sé qué me fumé acá
+ */
 function idSarcher(n){
     let idFound = false;
     let contador = 0;
