@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2021 a las 18:33:46
+-- Tiempo de generación: 22-07-2021 a las 15:32:10
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.2
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `lolaenbarracas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carts`
+--
+
+CREATE TABLE `carts` (
+  `product_id` int(11) NOT NULL,
+  `waist_id` int(11) NOT NULL,
+  `color_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `check_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `checks`
+--
+
+CREATE TABLE `checks` (
+  `id` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -24055,7 +24081,7 @@ INSERT INTO `products` (`id`, `code`, `name`, `short_desc`, `long_desc`, `sub_ty
 (1330, '', '12', 'Zapatilla', '', 0, 31, 8, '5700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
 (1331, '', '13', 'Sandalia', '', 0, 31, 1, '5900.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
 (1332, '', '14', 'Sandalia', '', 0, 31, 1, '5700.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
-(1333, '', '15', 'Sandalia', '', 0, 31, 1, '6200.00', '0.00', '0.00', 'Y', 0, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
+(1333, '', '15', 'Sandalia', '', 0, 31, 1, '6200.00', '0.00', '0.00', 'Y', 1, 'Y', '', '', '', '\'\'', 'Y', '0.00'),
 (1334, '', '1331.108 Nude con Metal', '', '', 0, 31, 8, '5890.00', '0.00', '0.00', 'N', 0, 'N', '', '', '', '\'\'', 'Y', '0.00'),
 (1335, '', 'Morrison', '', '', 0, 31, 10, '5000.00', '0.00', '5400.00', 'N', 0, 'Y', '', '', '', '', 'N', '0.00'),
 (1336, '', 'Gilmour', '', '', 0, 31, 12, '5000.00', '0.00', '6000.00', 'N', 0, 'Y', '', '', '', '', 'N', '0.00'),
@@ -26104,6 +26130,12 @@ INSERT INTO `web_info` (`name`, `descrip`, `phone`, `email`, `address`, `city`, 
 --
 
 --
+-- Indices de la tabla `checks`
+--
+ALTER TABLE `checks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `clients`
 --
 ALTER TABLE `clients`
@@ -26215,6 +26247,12 @@ ALTER TABLE `web_info`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `checks`
+--
+ALTER TABLE `checks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `clients`
